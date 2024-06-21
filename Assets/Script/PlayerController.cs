@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour
             GetComponent<Animator>().Play("Down");
         }
     
-        float shootHor = Input.GetAxis("ShootHorizontal");
-        float shootVer = Input.GetAxis("ShootVertical");
+        float shootHor = Input.GetAxisRaw("ShootHorizontal");
+        float shootVer = Input.GetAxisRaw("ShootVertical");
 
         if ((shootHor != 0 || shootVer !=0) && Time.time > lastFire + fireDelay)
         {
