@@ -19,8 +19,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
 
         if (horizontal > 0)
         {
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
             lastFire = Time.time;
         }
 
-        playerBody.velocity = new Vector3(horizontal * playerSpeed, vertical * playerSpeed, 0 );
+        playerBody.velocity = movement * playerSpeed;
         collectedText.text = "Item Collected:" + collectedAmount;
 
     }
