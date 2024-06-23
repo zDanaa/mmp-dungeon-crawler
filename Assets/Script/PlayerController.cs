@@ -10,10 +10,15 @@ public class PlayerController : MonoBehaviour
     public float bulletSpeed;
     private float lastFire;
     public float fireDelay;
+    public float maxHealth = 100;
+    public float currentHealth;
+    public HealthBarScript healthBar;
     // Start is called before the first frame update
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -23,6 +28,8 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
+        playerBody.velocity = movement * playerSpeed;
+        collectedText.text = "Item Collected:" + collectedAmount;
 
         if (horizontal > 0)
         {
@@ -44,8 +51,12 @@ public class PlayerController : MonoBehaviour
             lastFire = Time.time;
         }
 
-        playerBody.velocity = movement * playerSpeed;
-        collectedText.text = "Item Collected:" + collectedAmount;
+        //test method for the heathbar, to be deleted later !!!
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
+
 
     }
     public void Shoot (float x, float y)
@@ -58,4 +69,11 @@ public class PlayerController : MonoBehaviour
             0
         ).normalized * bulletSpeed;
     }
+
+    void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }
+    
 }
