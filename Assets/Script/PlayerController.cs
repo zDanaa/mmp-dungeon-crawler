@@ -24,28 +24,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
-        playerBody.velocity = movement * playerSpeed;
-        collectedText.text = "Item Collected:" + collectedAmount;
-
-        if (horizontal > 0)
+        if(currentHealth >0 )
         {
-            GetComponent<Animator>().Play("Right");
-        } else if (horizontal < 0){
-            GetComponent<Animator>().Play("Left");
-        } else if (vertical > 0){
-            GetComponent<Animator>().Play("Up");
-        } else if (vertical < 0){
-            GetComponent<Animator>().Play("Down");
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+
+            Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
+            playerBody.velocity = movement * playerSpeed;
+            collectedText.text = "Item Collected:" + collectedAmount;
+
+            if (horizontal > 0)
+            {
+                GetComponent<Animator>().Play("Right");
+            } else if (horizontal < 0){
+                GetComponent<Animator>().Play("Left");
+            } else if (vertical > 0){
+                GetComponent<Animator>().Play("Up");
+            } else if (vertical < 0){
+                GetComponent<Animator>().Play("Down");
+            }
         }
-    
         float shootHor = Input.GetAxisRaw("ShootHorizontal");
         float shootVer = Input.GetAxisRaw("ShootVertical");
 
-        if ((shootHor != 0 || shootVer !=0) && Time.time > lastFire + fireDelay)
+        if ((shootHor != 0 || shootVer !=0) && Time.time > lastFire + fireDelay && currentHealth >0)
         {
             Shoot(shootHor, shootVer);
             lastFire = Time.time;
