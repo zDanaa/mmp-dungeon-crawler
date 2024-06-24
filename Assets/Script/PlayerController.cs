@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     private float lastFire;
     public float fireDelay;
     // Start is called before the first frame update
+
+    //Von Lilli
+    [SerializeField]
+    private int maxHit; // Wie oft er von bullets getroffen werden kann
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -19,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -58,4 +63,20 @@ public class PlayerController : MonoBehaviour
             0
         ).normalized * bulletSpeed;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("EnemyBullet")){
+            maxHit -=1;
+            if(maxHit == 0){
+            Destroy(gameObject); //Or death animation
+            Debug.Log("killed");
+            }
+        }
+    }
 }
+
+/*if(other.gameObject.CompareTag("Enemy")){
+            Destroy(other.gameObject);
+            target = null;
+        } */ //Nach dem prinzip könnte man One Hit enemys machen

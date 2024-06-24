@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class ShootingEnemyController : MonoBehaviour
+public class SlashingEnemyController : MonoBehaviour
 {
-
     //Attributs needed to follow player
     [SerializeField]
     public float speed;
@@ -13,6 +12,8 @@ public class ShootingEnemyController : MonoBehaviour
 
     [SerializeField]
     private float distanceToPlayer;
+
+   
 
 
 
@@ -28,11 +29,23 @@ public class ShootingEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null){
+            //PlayerController destroyed
+            return;
+        }
         
+        //To move enemy to player
         if(Vector2.Distance(transform.position, target.position)> distanceToPlayer ){
         transform.position= Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime );
         }
+        //Near enough but not to near he is supoosed to stop
+        /*else if (Vector2.Distance(transform.position, target.position)< distanceToPlayer && Vector2.Distance(transform.position, target.position)> retreatDistance){
+            transform.position=this.transform.position;
+        }*/
+        
+       
+
     }
-           
-           
+
+    
 }

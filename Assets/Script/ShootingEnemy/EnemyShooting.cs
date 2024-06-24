@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class EnemyShooting : MonoBehaviour
 {
 
     public GameObject bullet;
@@ -25,6 +25,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Shoot");
         timer += Time.deltaTime;
 
         //if you want the enemy to have only a certain shooting distance use this
