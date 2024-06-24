@@ -22,6 +22,10 @@ public class ItemController : MonoBehaviour
             PlayerController.collectedAmount++;
             Destroy(gameObject);
         }
+    }
 
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 }

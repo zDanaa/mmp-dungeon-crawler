@@ -22,5 +22,13 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject);
 
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Item"){
+            collision.gameObject.GetComponent<ItemController>().Death();
+            Destroy(gameObject);
+        }
+    }
     
 }
