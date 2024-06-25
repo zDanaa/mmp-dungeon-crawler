@@ -841,7 +841,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &1595394144
+--- !u!1001 &1597730443
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -850,32 +850,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -9137541150786149461, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
-      propertyPath: m_Size.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -9137541150786149461, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
-      propertyPath: m_Size.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -9137541150786149461, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: -9137541150786149461, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -1564318723, guid: f951ade03051295409a3eb97233f1036, type: 3}
     - target: {fileID: 641051957660462265, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
       propertyPath: m_Name
       value: FireRatePowerUp
       objectReference: {fileID: 0}
     - target: {fileID: 1506153926675392307, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6199996
+      value: -3.68
       objectReference: {fileID: 0}
     - target: {fileID: 1506153926675392307, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3600001
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 1506153926675392307, guid: 588c1ad5d51f26643ba11a2302f3cd5c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1417,5 +1405,5 @@ SceneRoots:
   - {fileID: 1857942103}
   - {fileID: 5075576179219028991}
   - {fileID: 440862572}
-  - {fileID: 1595394144}
   - {fileID: 781913501}
+  - {fileID: 1597730443}
