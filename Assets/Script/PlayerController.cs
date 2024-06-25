@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Data.Common;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float lastFire;
     public float fireDelay = 0.5f;
     private Coroutine fireRateCoroutine;
+
+    private bool volleyActive = false;
 
     public float maxHealth = 100;
     public float currentHealth;
@@ -52,7 +55,10 @@ public class PlayerController : MonoBehaviour
         float shootHor = Input.GetAxisRaw("ShootHorizontal");
         float shootVer = Input.GetAxisRaw("ShootVertical");
 
-        if ((shootHor != 0 || shootVer !=0) && Time.time > lastFire + fireDelay && currentHealth >0)
+        if ((shootHor != 0 || shootVer !=0) && 
+             Time.time > lastFire + fireDelay && 
+             currentHealth >0 && 
+             !volleyActive)
         {
             Shoot(shootHor, shootVer);
             lastFire = Time.time;
@@ -105,6 +111,27 @@ public class PlayerController : MonoBehaviour
         fireDelay = 0.5f;
     }
 
+    private void StartBulletVolley(){
+        volleyActive = true;
+        int iterations = 6;
+        StartCoroutine(BulletVolley(iterations));
+    }
+
+    private IEnumerator BulletVolley(int iterations){
+        for (int i = 0; i < iterations; i++){
+            Shoot(0, 1);
+            Shoot(1, 0);
+            Shoot(1, 1);
+            Shoot(0, -1);
+            Shoot(-1, 0);
+            Shoot(-1, 1);
+            Shoot(1, -1);
+            Shoot(-1, -1);
+            yield return new WaitForSeconds(fireDelay);
+        }
+        volleyActive = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Item"){
@@ -116,9 +143,8 @@ public class PlayerController : MonoBehaviour
                 IncreaseFireRate();
             }
             if (itemID == "volley"){
-                print("Volley");
+                StartBulletVolley();
             }
-
         }
     }
     
