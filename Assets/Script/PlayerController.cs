@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Data.Common;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
@@ -9,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed;
     private float lastFire;
-    public float fireDelay;
+    public float fireDelay = 0.5f;
+    private Coroutine fireRateCoroutine;
+
     public float maxHealth = 100;
     public float currentHealth;
     public HealthBarScript healthBar;
@@ -84,11 +89,36 @@ public class PlayerController : MonoBehaviour
         if (currentHealth > maxHealth){currentHealth = maxHealth;}
         healthBar.SetHealth(currentHealth);
     }
+    public void IncreaseFireRate()
+    {
+        if (fireRateCoroutine != null)
+        {
+            StopCoroutine(fireRateCoroutine);
+        }
+        fireDelay -= 0.2f;
+        fireRateCoroutine = StartCoroutine(ResetFireRateAfterDelay(5));
+    }
+
+    private IEnumerator ResetFireRateAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        fireDelay = 0.5f;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Item"){
-            Heal(40);
+            string itemID = collision.GetComponent<ItemController>().ID;
+            if (itemID  == "health"){
+                Heal(40);
+            }
+            if (itemID == "fireRate"){
+                IncreaseFireRate();
+            }
+            if (itemID == "volley"){
+                print("Volley");
+            }
+
         }
     }
     
