@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameTime = 10 * 60;
-    public int miniBossSpawnTime = 5 * 60;
+    public float gameTime;
+    public int miniBossSpawnTime;
     public Text timerText;
 
     void Start()

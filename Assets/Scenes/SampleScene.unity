@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de23400b8d6751f479aa28c49303faab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 600
-  miniBossSpawnTime: 300
+  gameTime: 120
+  miniBossSpawnTime: 60
   timerText: {fileID: 1037877449}
 --- !u!4 &443432879
 Transform:
