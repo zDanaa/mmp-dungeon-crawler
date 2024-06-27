@@ -38,12 +38,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         if(currentHealth >0 ){}
         
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
+=======
+        if (currentHealth > 0)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+>>>>>>> Stashed changes
 
             playerBody.velocity = movement * playerSpeed;
             collectedText.text = "Item Collected:" + collectedAmount;
@@ -51,20 +58,26 @@ public class PlayerController : MonoBehaviour
             if (horizontal > 0)
             {
                 GetComponent<Animator>().Play("Right");
-            } else if (horizontal < 0){
+            }
+            else if (horizontal < 0)
+            {
                 GetComponent<Animator>().Play("Left");
-            } else if (vertical > 0){
+            }
+            else if (vertical > 0)
+            {
                 GetComponent<Animator>().Play("Up");
-            } else if (vertical < 0){
+            }
+            else if (vertical < 0)
+            {
                 GetComponent<Animator>().Play("Down");
             }
         
         float shootHor = Input.GetAxisRaw("ShootHorizontal");
         float shootVer = Input.GetAxisRaw("ShootVertical");
 
-        if ((shootHor != 0 || shootVer !=0) && 
-             Time.time > lastFire + fireDelay && 
-             currentHealth >0 && 
+        if ((shootHor != 0 || shootVer != 0) &&
+             Time.time > lastFire + fireDelay &&
+             currentHealth > 0 &&
              !volleyActive)
         {
             Shoot(shootHor, shootVer);
@@ -79,13 +92,13 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    public void Shoot (float x, float y)
+    public void Shoot(float x, float y)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector3(
-            (x<0) ? Mathf.Floor(x) : Mathf.Ceil(x),
-            (y<0) ? Mathf.Floor(y) : Mathf.Ceil(y),
+            (x < 0) ? Mathf.Floor(x) : Mathf.Ceil(x),
+            (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y),
             0
         ).normalized * bulletSpeed;
     }
@@ -104,7 +117,7 @@ public class PlayerController : MonoBehaviour
     public void Heal(float amount)
     {
         currentHealth += amount;
-        if (currentHealth > maxHealth){currentHealth = maxHealth;}
+        if (currentHealth > maxHealth) { currentHealth = maxHealth; }
         healthBar.SetHealth(currentHealth);
     }
     public void IncreaseFireRate()
@@ -123,14 +136,17 @@ public class PlayerController : MonoBehaviour
         fireDelay = 0.5f;
     }
 
-    private void StartBulletVolley(){
+    private void StartBulletVolley()
+    {
         volleyActive = true;
         int iterations = 6;
         StartCoroutine(BulletVolley(iterations));
     }
 
-    private IEnumerator BulletVolley(int iterations){
-        for (int i = 0; i < iterations; i++){
+    private IEnumerator BulletVolley(int iterations)
+    {
+        for (int i = 0; i < iterations; i++)
+        {
             Shoot(0, 1);
             Shoot(1, 0);
             Shoot(1, 1);
@@ -146,15 +162,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Item"){
+        if (collision.tag == "Item")
+        {
             string itemID = collision.GetComponent<ItemController>().ID;
-            if (itemID  == "health"){
+            if (itemID == "health")
+            {
                 Heal(40);
             }
-            if (itemID == "fireRate"){
+            if (itemID == "fireRate")
+            {
                 IncreaseFireRate();
             }
-            if (itemID == "volley"){
+            if (itemID == "volley")
+            {
                 StartBulletVolley();
             }
         }
@@ -172,7 +192,10 @@ public class PlayerController : MonoBehaviour
         // Handle player death (e.g., respawn, game over, etc.)
         Debug.Log("Player died!");
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
 
 }
 
