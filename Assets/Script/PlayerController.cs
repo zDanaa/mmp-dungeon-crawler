@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour
     public float currentHealth;
     public HealthBarScript healthBar;
     // Start is called before the first frame update
+
+    //Von Lilli
+    [SerializeField]
+    private int maxHit; // Wie oft er von bullets getroffen werden kann
+
+    private int health = 5;
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -32,7 +38,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentHealth >0 )
+        if(currentHealth >0 ){}
+        
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
+
+        if (horizontal > 0)
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
@@ -83,10 +96,15 @@ public class PlayerController : MonoBehaviour
         ).normalized * bulletSpeed;
     }
 
+
     void TakeDamage(float damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     public void Heal(float amount)
@@ -146,6 +164,25 @@ public class PlayerController : MonoBehaviour
                 StartBulletVolley();
             }
         }
+        if(collision.gameObject.CompareTag("EnemyBullet")){
+            maxHit -=1;
+            if(maxHit == 0){
+            Destroy(gameObject); //Or death animation
+            Debug.Log("killed");
+            }
+        }
+    }
+
+    void Die()
+    {
+        // Handle player death (e.g., respawn, game over, etc.)
+        Debug.Log("Player died!");
     }
     
+
 }
+
+/*if(other.gameObject.CompareTag("Enemy")){
+            Destroy(other.gameObject);
+            target = null;
+        } */ //Nach dem prinzip könnte man One Hit enemys machen
