@@ -8,6 +8,8 @@ public class EnemyShooting : MonoBehaviour
 
     public GameObject bullet;
     public Transform bulletPos;
+    [SerializeField]
+    private float fireRate = 2;
 
     private float timer;
 
@@ -42,7 +44,7 @@ public class EnemyShooting : MonoBehaviour
 
         }*/
             
-        if (timer > 2){
+        if (timer > fireRate){
             timer = 0;
             shoot();
 
