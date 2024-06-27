@@ -29,6 +29,9 @@ public class BulletController : MonoBehaviour
             collision.gameObject.GetComponent<ItemController>().Death();
             Destroy(gameObject);
         }
+        if (collision.tag == "Obstacle"){
+            Destroy(gameObject);
+        }
     }
     
 }
