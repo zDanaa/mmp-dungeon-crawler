@@ -38,40 +38,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        if(currentHealth >0 ){}
-        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
         Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
-=======
-        if (currentHealth > 0)
+        playerBody.velocity = movement * playerSpeed;
+        collectedText.text = "Item Collected:" + collectedAmount;
+
+        if (horizontal > 0)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
->>>>>>> Stashed changes
+            GetComponent<Animator>().Play("Right");
+        }
+        else if (horizontal < 0)
+        {
+            GetComponent<Animator>().Play("Left");
+        }
+        else if (vertical > 0)
+        {
+            GetComponent<Animator>().Play("Up");
+        }
+        else if (vertical < 0)
+        {
+            GetComponent<Animator>().Play("Down");
+        }
 
-            playerBody.velocity = movement * playerSpeed;
-            collectedText.text = "Item Collected:" + collectedAmount;
-
-            if (horizontal > 0)
-            {
-                GetComponent<Animator>().Play("Right");
-            }
-            else if (horizontal < 0)
-            {
-                GetComponent<Animator>().Play("Left");
-            }
-            else if (vertical > 0)
-            {
-                GetComponent<Animator>().Play("Up");
-            }
-            else if (vertical < 0)
-            {
-                GetComponent<Animator>().Play("Down");
-            }
-        
         float shootHor = Input.GetAxisRaw("ShootHorizontal");
         float shootVer = Input.GetAxisRaw("ShootVertical");
 
@@ -89,9 +78,8 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(20);
         }
-
-
     }
+
     public void Shoot(float x, float y)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
@@ -178,11 +166,13 @@ public class PlayerController : MonoBehaviour
                 StartBulletVolley();
             }
         }
-        if(collision.gameObject.CompareTag("EnemyBullet")){
-            maxHit -=1;
-            if(maxHit == 0){
-            Destroy(gameObject); //Or death animation
-            Debug.Log("killed");
+        if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            maxHit -= 1;
+            if (maxHit == 0)
+            {
+                Destroy(gameObject); //Or death animation
+                Debug.Log("killed");
             }
         }
     }
@@ -192,10 +182,6 @@ public class PlayerController : MonoBehaviour
         // Handle player death (e.g., respawn, game over, etc.)
         Debug.Log("Player died!");
     }
-<<<<<<< Updated upstream
-    
-=======
->>>>>>> Stashed changes
 
 }
 
