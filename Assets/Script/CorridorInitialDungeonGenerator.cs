@@ -26,12 +26,48 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
 
         CreateCorridors(floorpoints, potentialRoomPoints);
 
-        HashSet<Vector2Int> roomPositions = CreateRooms(potentialRoomPoints);
+        HashSet<Vector2Int> roomPoints = CreateRooms(potentialRoomPoints);
 
-        floorpoints.UnionWith(roomPositions);
+        List<Vector2Int> deadEnds = SelectDeadEnds(floorpoints);
+
+        CreateRoomsAtDeadEnds(deadEnds, roomPoints);
+
+        floorpoints.UnionWith(roomPoints);
 
         tilemapVisualizer.PaintFloorTiles(floorpoints);
         WallGenerator.GenerateWalls(floorpoints, tilemapVisualizer);
+    }
+
+    private void CreateRoomsAtDeadEnds(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomFloors)
+    {
+        foreach (var deadEnd in deadEnds)
+        {
+
+            if (!roomFloors.Contains(deadEnd))
+            {
+                var room = startRandomWalk(randomWalkData, deadEnd);
+                roomFloors.UnionWith(room);
+            }
+        }
+    }
+
+    private List<Vector2Int> SelectDeadEnds(HashSet<Vector2Int> floorpoints)
+    {
+        List<Vector2Int > deadEnds = new List<Vector2Int>();
+
+        foreach (var point in floorpoints)
+        {
+            int numberOfNeighbours = 0;
+            foreach (var direction in Direction2D.mainDirectionsList)
+            {
+                if (floorpoints.Contains(point + direction))
+                    { numberOfNeighbours++; }
+            }
+            if (numberOfNeighbours == 1)
+                { deadEnds.Add(point); }
+            
+        }
+        return deadEnds;
     }
 
     private HashSet<Vector2Int> CreateRooms(HashSet<Vector2Int> potentialRoomPoints)
