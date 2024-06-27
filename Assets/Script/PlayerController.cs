@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     //Von Lilli
     [SerializeField]
-    private int maxHit; // Wie oft er von bullets getroffen werden kann
 
     private int health = 5;
     void Start()
@@ -73,11 +72,6 @@ public class PlayerController : MonoBehaviour
             lastFire = Time.time;
         }
 
-        //test method for the heathbar, to be deleted later !!!
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
     }
 
     public void Shoot(float x, float y)
@@ -96,10 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if (health <= 0)
-        {
-            Die();
-        }
+        if (currentHealth <= 0) { Die(); }
     }
 
     public void Heal(float amount)
@@ -168,17 +159,13 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            maxHit -= 1;
-            if (maxHit == 0)
-            {
-                Destroy(gameObject); //Or death animation
-                Debug.Log("killed");
-            }
+            TakeDamage(20);
         }
     }
 
     void Die()
     {
+        Destroy(gameObject); //Or death animation
         // Handle player death (e.g., respawn, game over, etc.)
         Debug.Log("Player died!");
     }
