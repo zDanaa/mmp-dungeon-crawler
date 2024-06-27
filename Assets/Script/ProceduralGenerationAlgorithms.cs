@@ -35,7 +35,7 @@ public static class ProceduralGenerationAlgorithms
         return corridor;
     }
 
-    public static List<BoundsInt> binarySpacePartioning(BoundsInt spaceToSplit, int minWidth, int minHeight)
+    public static List<BoundsInt> BinarySpacePartioning(BoundsInt spaceToSplit, int minWidth, int minHeight)
     {
         Queue<BoundsInt> roomsQueue = new Queue<BoundsInt>();
         List<BoundsInt> roomsList = new List<BoundsInt>();
@@ -43,7 +43,7 @@ public static class ProceduralGenerationAlgorithms
         while(roomsQueue.Count > 0)
         {
             var room = roomsQueue.Dequeue();
-            if(room.size.y<minHeight && room.size.x >= minWidth)
+            if(room.size.y >= minHeight && room.size.x >= minWidth)
             {
                 if(Random.value < 0.5f)
                 {
@@ -84,7 +84,7 @@ public static class ProceduralGenerationAlgorithms
     private static void SplitVertically(int minWidth,  Queue<BoundsInt> roomsQueue, BoundsInt room)
     {
         var xSplit = Random.Range(1, room.size.x);
-        BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(xSplit, room.min.y, room.min.z));
+        BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(xSplit, room.size.y, room.size.z));
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x + xSplit, room.min.y, room.min.z), 
             new Vector3Int(room.size.x - xSplit, room.size.y, room.size.z));
         roomsQueue.Enqueue(room1);
