@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Data.Common;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
     Rigidbody2D playerBody;
-    public Text collectedText;
+    public TextMeshProUGUI collectedText;
     public static int collectedAmount = 0;
     public GameObject bulletPrefab;
     public float bulletSpeed;
