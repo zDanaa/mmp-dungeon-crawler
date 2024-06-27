@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     //Von Lilli
     [SerializeField]
     private int maxHit; // Wie oft er von bullets getroffen werden kann
+
+    private int health = 5;
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -73,6 +75,21 @@ public class PlayerController : MonoBehaviour
             Debug.Log("killed");
             }
         }
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        // Handle player death (e.g., respawn, game over, etc.)
+        Debug.Log("Player died!");
     }
 }
 
