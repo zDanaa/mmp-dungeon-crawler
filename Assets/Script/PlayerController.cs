@@ -45,12 +45,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
 
-        if (horizontal > 0)
-        {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-
-            Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
             playerBody.velocity = movement * playerSpeed;
             collectedText.text = "Item Collected:" + collectedAmount;
 
@@ -64,7 +58,7 @@ public class PlayerController : MonoBehaviour
             } else if (vertical < 0){
                 GetComponent<Animator>().Play("Down");
             }
-        }
+        
         float shootHor = Input.GetAxisRaw("ShootHorizontal");
         float shootVer = Input.GetAxisRaw("ShootVertical");
 
