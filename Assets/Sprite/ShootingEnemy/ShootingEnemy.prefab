@@ -613,7 +613,7 @@ MonoBehaviour:
   speed: 2
   distanceToPlayer: 5
   retreatDistance: 4
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 5984611250856329033}
   maxHealth: 100
   currentHealth: 0
 --- !u!61 &6684502834746125511

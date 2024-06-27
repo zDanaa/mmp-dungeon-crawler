@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Die()
+    private void Die()
     {
         Destroy(gameObject); //Or death animation
         // Handle player death (e.g., respawn, game over, etc.)

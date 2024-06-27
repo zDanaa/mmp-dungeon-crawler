@@ -72,14 +72,27 @@ public class ShootingEnemyController : MonoBehaviour
         }
     }*/
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("Bullet"))
+        if (collision.tag == "Bullet")
         {
-            Destroy(other.gameObject);
-            Debug.Log("Enemy hit by bullet (trigger)");
-            Destroy(gameObject);
+            TakeDamage(20);
         }
+
+    }
+
+    private void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0) { Die(); }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject); //Or death animation
+        // Handle player death (e.g., respawn, game over, etc.)
+        Debug.Log("Player died!");
     }
 }
 
