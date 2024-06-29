@@ -8,7 +8,7 @@ public class HealthPowerUp : ItemController
 {
     
 
-    [SerializeField]
+    
     private AudioSource myAudioSource;
     private CircleCollider2D itemCollider;
     private SpriteRenderer sr;
@@ -19,7 +19,6 @@ public class HealthPowerUp : ItemController
 
     void Start(){
         myAudioSource = GetComponent<AudioSource>();
-        Debug.Log("Ich komme hier hin");
         itemCollider = GetComponent<CircleCollider2D>();
         sr = GetComponent<SpriteRenderer>();
 
@@ -34,7 +33,7 @@ public class HealthPowerUp : ItemController
     private void OnTriggerEnter2D(UnityEngine.Collider2D col)
     {
        
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Bullet"){
+        if (col.gameObject.tag == "Player" ){
             myAudioSource.Play();
             itemCollider.enabled = false;
             sr.enabled= false;

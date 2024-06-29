@@ -25,10 +25,10 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Item"){
-            collision.gameObject.GetComponent<ItemController>().Death();
-            Destroy(gameObject);
-        }
+        //if (collision.tag == "Item"){
+            //collision.gameObject.GetComponent<ItemController>().Death();
+            //Destroy(gameObject);
+        //}
         if (collision.tag == "Obstacle"){
             Destroy(gameObject);
         }
