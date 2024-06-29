@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class DemonEnemyController : MonoBehaviour
 {
+
+    
     public Transform player;
-    public float speed = 1f;
-    public float attackDistance = 0.5f;
-    //public int playerHealth = 5;
-    public float bounceBackForce = 2f;
-    private Animator animator;
     private Rigidbody2D rb;
-    private bool isSlashing = false;
+    public float speed = 1f;
+    public int damage = 10;
+    public float attackCooldown = 2.0f;
+    public float stopDistance = 0.5f;
+    private bool canAttack = true;
+
+    //public float attackDistance = 0.5f;
+    //public int playerHealth = 5;
+    //public float bounceBackForce = 2f;
+    //private Animator animator;
+    
+    //private bool isSlashing = false;
+
+    public HealthBarScript healthBar;
+    public float maxHealth = 100;
+    public float currentHealth;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+       // animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
+    
     {
         //Move towards player
         /* Vector2 direction = (player.position - transform.position).normalized;
@@ -38,9 +54,22 @@ public class DemonEnemyController : MonoBehaviour
              rb.velocity = Vector2.zero;
              animator.SetTrigger("isSlashing");
          }*/
-         if (!isSlashing)
+        /* if (!isSlashing)
         {
             FollowPlayer();
+        }*/
+        //FollowPlayer();
+        if (player != null) {
+
+            float distance = Vector2.Distance(transform.position, player.position);
+            if (distance > stopDistance)
+            {
+                Vector2 direction = (player.position - transform.position).normalized;
+                transform.Translate(direction * speed * Time.deltaTime);
+            }
+            else if (canAttack){
+                StartCoroutine(Attack());
+            }
         }
        
 
@@ -80,7 +109,7 @@ public class DemonEnemyController : MonoBehaviour
                  }
              }
          }*/
-    void FollowPlayer()
+    /*void FollowPlayer()
     {
         if (player != null)
         {
@@ -94,18 +123,18 @@ public class DemonEnemyController : MonoBehaviour
             else
             {
                 rb.velocity = Vector2.zero;
-                StartSlashing();
+                //StartSlashing();
             }
         }
     }
 
-    void StartSlashing()
+   /* void StartSlashing()
     {
         isSlashing = true;
         animator.SetTrigger("isSlashing");
-    }
+    }*/
 
-    void OnCollisionEnter2D(Collision2D collision)
+   /* void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -118,15 +147,64 @@ public class DemonEnemyController : MonoBehaviour
                 playerHealth.TakeDamage(1);
                 Debug.Log("Player Health minus slashing: " + playerHealth.CurrentHealth);
             }
-            isSlashing = false;
-
+            //isSlashing = false;
+            Invoke("ResumeFollowingPlayer", 0.5f);
         }
     }
 
-    public void EndSlashing()
+    /*public void EndSlashing()
     {
         isSlashing = false;
+    }*/
+
+   /* void ResumeFollowingPlayer() {
+        rb.velocity = Vector2.zero;
+        FollowPlayer();
+    }*/
+
+
+
+   
+
+     /* private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet")
+        {
+            TakeDamage(20);
+            Debug.Log("Demon hit by bullet");
+        } 
+        if (collision.CompareTag("Player") && canAttack)
+        {
+            PlayerController playerScript = collision.GetComponent<PlayerController>();
+            if (playerScript != null)
+            {
+                playerScript.TakeDamage(damage);
+                StartCoroutine(AttackCooldown());
+            }
+        }
+
+    }*/
+     IEnumerator Attack()
+    {
+        canAttack = false;
+        PlayerController playerScript = player.GetComponent<PlayerController>();
+        if (playerScript != null)
+        {
+            playerScript.TakeDamage(damage);
+        }
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 
+    private void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0) 
+        { 
+           Destroy(gameObject);
+           Debug.Log("Demon killed");
+     }
+    }
 
 }

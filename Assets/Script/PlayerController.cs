@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
@@ -162,6 +162,10 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(20);
         }
+       /* if (collision.gameObject.CompareTag("SlashingEnemy"))
+        {
+            TakeDamage(10);
+        }*/
     }
 
     private void Die()
