@@ -28,11 +28,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
 
     private int health = 5;
+
+    
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     // Update is called once per frame
@@ -84,6 +87,8 @@ public class PlayerController : MonoBehaviour
             (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y),
             0
         ).normalized * bulletSpeed;
+        
+        
     }
 
 

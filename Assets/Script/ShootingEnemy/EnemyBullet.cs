@@ -13,10 +13,14 @@ public class EnemyBullet : MonoBehaviour
 
     private float timer;
 
+    //Audio
+    private AudioSource e_bulletSound;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        e_bulletSound = GetComponent<AudioSource>();
 
         if (player != null)
         {
@@ -26,6 +30,7 @@ public class EnemyBullet : MonoBehaviour
             float rotate = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rotate + 90);
         }
+        e_bulletSound.Play();
     }
 
     // Update is called once per frame

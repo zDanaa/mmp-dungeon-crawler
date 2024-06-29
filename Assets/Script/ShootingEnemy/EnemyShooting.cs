@@ -16,11 +16,14 @@ public class EnemyShooting : MonoBehaviour
     //if you want the enemy to have only a certain shooting distance use this (3 comments)
     private GameObject player;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
         //if you want the enemy to have only a certain shooting distance use this
         player = GameObject.FindGameObjectWithTag ("Player");
+        
         
     }
 
@@ -54,5 +57,6 @@ public class EnemyShooting : MonoBehaviour
 
     public void shoot(){
         Instantiate(bullet,bulletPos.position, Quaternion.identity);
+        
     }
 }
