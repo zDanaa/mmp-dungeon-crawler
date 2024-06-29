@@ -92,7 +92,7 @@ public class ShootingEnemyController : MonoBehaviour
     {
         Destroy(gameObject); //Or death animation
         // Handle player death (e.g., respawn, game over, etc.)
-        Debug.Log("Player died!");
+        Debug.Log("Shooter died died!");
     }
 }
 
