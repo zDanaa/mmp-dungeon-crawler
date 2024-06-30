@@ -836,6 +836,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &463995121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2998038489356791927, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
+  m_PrefabInstance: {fileID: 2683176564080065531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &481973422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,9 +1108,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.028301895, g: 0.027901396, b: 0.027901396, a: 0.31764707}
-    m_HighlightedColor: {r: 0.047169805, g: 0.046502307, b: 0.046502307, a: 0.49803922}
-    m_PressedColor: {r: 0.01886791, g: 0.018422913, b: 0.018422913, a: 0.70980394}
+    m_NormalColor: {r: 0.028301895, g: 0.027901396, b: 0.027901396, a: 0.4509804}
+    m_HighlightedColor: {r: 0.047169805, g: 0.046502307, b: 0.046502307, a: 0.627451}
+    m_PressedColor: {r: 0.01886791, g: 0.018422913, b: 0.018422913, a: 0.74509805}
     m_SelectedColor: {r: 0.047169805, g: 0.045612313, b: 0.045612313, a: 0.6039216}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2505,8 +2510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 426.6, y: 233.75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 473, y: 178.58}
+  m_SizeDelta: {x: 69.7531, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1076729394
 GameObject:
@@ -2583,6 +2588,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076729394}
   m_CullTransparentMesh: 1
+--- !u!1 &1084441524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084441526}
+  - component: {fileID: 1084441525}
+  m_Layer: 0
+  m_Name: EnemySpawnerTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1084441525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084441524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330d9269094cf479a9e2d52c3de51d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnableObjects:
+  - {fileID: 8341293997310063816, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
+  - {fileID: 463995121}
+  spawnRate: 3
+  canSpawn: 1
+--- !u!4 &1084441526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084441524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088702961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,9 +2697,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.028301895, g: 0.027901396, b: 0.027901396, a: 0.31764707}
-    m_HighlightedColor: {r: 0.047169805, g: 0.046502307, b: 0.046502307, a: 0.49803922}
-    m_PressedColor: {r: 0.01886791, g: 0.018422913, b: 0.018422913, a: 0.70980394}
+    m_NormalColor: {r: 0.028301895, g: 0.027901396, b: 0.027901396, a: 0.4509804}
+    m_HighlightedColor: {r: 0.047169805, g: 0.046502307, b: 0.046502307, a: 0.627451}
+    m_PressedColor: {r: 0.01886791, g: 0.018422913, b: 0.018422913, a: 0.74509805}
     m_SelectedColor: {r: 0.047169805, g: 0.045612313, b: 0.045612313, a: 0.6039216}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -3171,7 +3225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 0.33333334}
+  m_Color: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 0.3529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3525,9 +3579,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.028301895, g: 0.027901396, b: 0.027901396, a: 0.31764707}
-    m_HighlightedColor: {r: 0.047169805, g: 0.046502307, b: 0.046502307, a: 0.49803922}
-    m_PressedColor: {r: 0.01886791, g: 0.018422913, b: 0.018422913, a: 0.70980394}
+    m_NormalColor: {r: 0.028301895, g: 0.027901396, b: 0.027901396, a: 0.4509804}
+    m_HighlightedColor: {r: 0.047169805, g: 0.046502307, b: 0.046502307, a: 0.627451}
+    m_PressedColor: {r: 0.01886791, g: 0.018422913, b: 0.018422913, a: 0.74509805}
     m_SelectedColor: {r: 0.047169805, g: 0.045612313, b: 0.045612313, a: 0.6039216}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -3636,7 +3690,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 9204394723720661615, guid: 58d74ab1d4bd54f83943330a7b6f78c6, type: 3}
   bulletSpeed: 7
   fireDelay: 0.5
-  maxHealth: 100
+  maxHealth: 400
   currentHealth: 0
   healthBar: {fileID: 1298799496}
   gameManager: {fileID: 1126934173}
@@ -5044,6 +5098,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlashingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2998038489356791927, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3620571234962254466, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_Controller
       value: 
@@ -5276,3 +5334,4 @@ SceneRoots:
   - {fileID: 9185500380031975296}
   - {fileID: 2683176564080065531}
   - {fileID: 332611846}
+  - {fileID: 1084441526}

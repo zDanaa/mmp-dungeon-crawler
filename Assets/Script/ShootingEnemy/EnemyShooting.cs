@@ -31,7 +31,7 @@ public class EnemyShooting : MonoBehaviour
     void Update()
     {
         if(player != null){
-        Debug.Log("Shoot");
+        //Debug.Log("Shoot");
         timer += Time.deltaTime;
 
         //if you want the enemy to have only a certain shooting distance use this

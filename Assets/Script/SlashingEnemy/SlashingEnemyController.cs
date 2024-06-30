@@ -23,12 +23,12 @@ public class SlashingEnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        //target= GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();  
+    {  
         animator = GetComponent<Animator>(); 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         rb = GetComponent<Rigidbody2D>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         
        
     }
