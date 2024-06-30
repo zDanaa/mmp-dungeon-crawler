@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     //Von Lilli
     [SerializeField]
 
+    public GameManager gameManager;
+
+    private bool isDead;
     private int health = 5;
 
     
@@ -96,7 +99,12 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if (currentHealth <= 0) { Die(); }
+        if (currentHealth <= 0 && !isDead)
+        { 
+            isDead = true;
+            gameManager.gameOver();
+            Die(); 
+        }
     }
 
     public void Heal(float amount)
@@ -178,6 +186,7 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject); //Or death animation
         // Handle player death (e.g., respawn, game over, etc.)
         Debug.Log("Player died!");
+        //GameManager.instance.ReloadScene();
     }
 
 }

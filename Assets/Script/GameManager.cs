@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public float gameTime;
     public int miniBossSpawnTime;
     public Text timerText;
+
+    public GameObject gameOverUI;
 
     void Start()
     {
@@ -44,5 +47,20 @@ public class GameManager : MonoBehaviour
     void PlayerWins()
     {
         Debug.Log("Player has won the game!");
+    }
+
+    public void gameOver(){
+        gameOverUI.SetActive(true);
+    }
+    public void RestartGame(){
+        SceneManager.LoadScene("Game");
+    }
+
+    public void MainMenu(){
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void QuitGame(){
+        Application.Quit();
     }
 }
