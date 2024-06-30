@@ -8,9 +8,49 @@ public static class WallGenerator
     public static void GenerateWalls(HashSet<Vector2Int> floorpoints, TilemapVisualizer tilemapVisualizer)
     {
         var simpleWallPoints = FindWallsInDirections(floorpoints, Direction2D.mainDirectionsList);
+        var cornerWallPoints = FindWallsInDirections(floorpoints, Direction2D.diagonalDirectionsList);
+        CreateBasicWalls(tilemapVisualizer, simpleWallPoints, floorpoints);
+        GenerateCornerWalls(tilemapVisualizer, cornerWallPoints, floorpoints);
+    }
+
+    private static void GenerateCornerWalls(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> cornerWallPoints, HashSet<Vector2Int> floorpoints)
+    {
+        foreach (var point in cornerWallPoints) 
+        {
+            string binaryNeighbours = "";
+            foreach (var direction in Direction2D.allDirectionsList)
+            {
+                var neighbourPoint = point + direction;
+                if (floorpoints.Contains(neighbourPoint))
+                {
+                    binaryNeighbours += "1";
+                }
+                else
+                {
+                    binaryNeighbours += "0";
+                }
+                tilemapVisualizer.paintSingleCornerWall(point, binaryNeighbours);
+            }
+        }
+    }
+
+    private static void CreateBasicWalls(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> simpleWallPoints, HashSet<Vector2Int> floorpoints)
+    {
         foreach (var point in simpleWallPoints)
         {
-            tilemapVisualizer.paintSingleSimpleWall(point);
+            string binaryNeighbours = "";
+            foreach (var direction in Direction2D.mainDirectionsList)
+            {
+                var neighbourPoint = point + direction;
+                if (floorpoints.Contains(neighbourPoint)){
+                    binaryNeighbours += "1";
+                }
+                else
+                {
+                    binaryNeighbours += "0";
+                }
+            }
+            tilemapVisualizer.paintSingleSimpleWall(point, binaryNeighbours);
         }
     }
 
