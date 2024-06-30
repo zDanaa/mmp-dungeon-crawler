@@ -10,7 +10,7 @@ public class BackgroundMusic : MonoBehaviour
     // Start is called before the first frame update
     public void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+
         audio = GetComponent<AudioSource>();
 
         if (instance == null)
