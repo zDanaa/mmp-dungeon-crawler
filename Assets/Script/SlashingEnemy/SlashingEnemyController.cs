@@ -14,6 +14,7 @@ public class SlashingEnemyController : MonoBehaviour
     public float attackCooldown = 2.0f; // Time between attacks
     public float stopDistance = 0.5f; // Distance to stop from player
     private bool canAttack = true;
+    private Animator animator;
     public HealthBarScript healthBar;
     public float maxHealth = 100;
     public float currentHealth;
@@ -24,7 +25,7 @@ public class SlashingEnemyController : MonoBehaviour
     void Start()
     {
         //target= GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();  
-        //animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>(); 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         rb = GetComponent<Rigidbody2D>();
@@ -51,14 +52,17 @@ public class SlashingEnemyController : MonoBehaviour
         
         //Follows player up to a certain range and then attacks
         if (player != null) {
-
+            
             float distance = Vector2.Distance(transform.position, player.position);
             if (distance > stopDistance)
             {
+                animator.SetBool("isAttacking", false);
                 Vector2 direction = (player.position - transform.position).normalized;
                 transform.Translate(direction * speed * Time.deltaTime);
             }
             else if (canAttack){
+                Debug.Log("isAttacking " + animator.GetBool("isAttacking"));
+                
                 StartCoroutine(Attack());
             }
         }
@@ -69,12 +73,17 @@ public class SlashingEnemyController : MonoBehaviour
      IEnumerator Attack()
     {
         canAttack = false;
+        animator.SetBool("isAttacking", true);
         PlayerController playerScript = player.GetComponent<PlayerController>();
         if (playerScript != null)
         {
+            
             playerScript.TakeDamage(damage);
+            
         }
+        
         yield return new WaitForSeconds(attackCooldown);
+        animator.SetBool("isAttacking", false);
         canAttack = true;
     }
 
