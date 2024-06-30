@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10de1e3819ec9d4faf852be0386761c, type: 3}
   m_Name: SmallRoom
   m_EditorClassIdentifier: 
-  iterations: 10
-  pathLength: 10
+  iterations: 50
+  pathLength: 15
   randomStartEachIteration: 1

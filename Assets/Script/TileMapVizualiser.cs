@@ -41,6 +41,6 @@ public class TilemapVisualizer : MonoBehaviour
     }
     
     internal void PaintSingleCornerWall(Vector2Int point, String binaryType) { 
-    
+        
     }
 }
