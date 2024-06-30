@@ -27,7 +27,16 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
 
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
 
-        floor = CreateSimpleRooms(roomsList);
+        if (activateRandomWalk)
+        {
+            floor = CreateRandomWalkRooms(roomsList);
+        }
+        else
+        {
+
+            floor = CreateSimpleRooms(roomsList);
+        }
+
 
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         foreach (var room in roomsList)
@@ -40,6 +49,25 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGenerator
 
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.GenerateWalls(floor, tilemapVisualizer);
+    }
+
+    private HashSet<Vector2Int> CreateRandomWalkRooms(List<BoundsInt> roomsList)
+    {
+        HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+        for (int i = 0; i < roomsList.Count; i++)
+        {
+            var roomBounds = roomsList[i];
+            var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
+            var roomFloor = startRandomWalk(randomWalkData, roomCenter);
+            foreach (var position in roomFloor)
+            {
+                if (position.x >= (roomBounds.xMin + offset) && position.x <= (roomBounds.xMax - offset) && position.y >= (roomBounds.yMin - offset)
+                    && position.y <= (roomBounds.yMax - offset)){
+                    floor.Add(position);
+                }
+            }
+        }
+        return floor;
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
