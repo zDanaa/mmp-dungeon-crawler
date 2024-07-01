@@ -168,10 +168,6 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(20);
         }
-       /* if (collision.gameObject.CompareTag("SlashingEnemy"))
-        {
-            TakeDamage(10);
-        }*/
     }
 
     private void Die()
