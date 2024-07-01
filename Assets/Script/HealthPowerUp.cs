@@ -20,10 +20,7 @@ public class HealthPowerUp : ItemController
     void Start(){
         myAudioSource = GetComponent<AudioSource>();
         itemCollider = GetComponent<CircleCollider2D>();
-        sr = GetComponent<SpriteRenderer>();
-
-
-        
+        sr = GetComponent<SpriteRenderer>();    
     }
     public HealthPowerUp()
     {
