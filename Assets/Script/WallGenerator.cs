@@ -29,8 +29,8 @@ public static class WallGenerator
                 {
                     binaryNeighbours += "0";
                 }
-                tilemapVisualizer.paintSingleCornerWall(point, binaryNeighbours);
             }
+            tilemapVisualizer.PaintSingleCornerWall(point, binaryNeighbours);
         }
     }
 
@@ -50,7 +50,7 @@ public static class WallGenerator
                     binaryNeighbours += "0";
                 }
             }
-            tilemapVisualizer.paintSingleSimpleWall(point, binaryNeighbours);
+            tilemapVisualizer.PaintSingleSimpleWall(point, binaryNeighbours);
         }
     }
 
@@ -62,7 +62,7 @@ public static class WallGenerator
             foreach (var direction in directionList)
             {
                 var neighbourpoint = point + direction;
-                if (!floorpoints.Contains(neighbourpoint))
+                if (floorpoints.Contains(neighbourpoint) == false)
                 {
                     wallPoints.Add(neighbourpoint);
                 }
