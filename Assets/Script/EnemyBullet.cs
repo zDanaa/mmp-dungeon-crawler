@@ -49,7 +49,6 @@ public class EnemyBullet : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            Debug.Log("Player hit by bullet (trigger)");
         }
         if (other.gameObject.CompareTag("Obstacle"))
         {

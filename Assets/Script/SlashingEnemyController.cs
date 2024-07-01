@@ -7,50 +7,33 @@ public class SlashingEnemyController : MonoBehaviour
 {
     [SerializeField]
 
-    public Transform player;
     private Rigidbody2D rb;
+    public Transform player;
     public float speed = 1f;
     public int damage = 10;
-    public float attackCooldown = 2.0f; // Time between attacks
-    public float stopDistance = 0.5f; // Distance to stop from player
+    public float attackCooldown = 2.0f; 
+    public float stopDistance = 0.5f;
     private bool canAttack = true;
     private Animator animator;
     public HealthBarScript healthBar;
     public float maxHealth = 100;
     public float currentHealth;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {  
         animator = GetComponent<Animator>(); 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        rb = GetComponent<Rigidbody2D>();
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        
-       
-    }
+        rb = GetComponent<Rigidbody2D>();        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-    // Update is called once per frame
+    }
     void Update()
     {
         if (player == null){
-            //PlayerController destroyed
             return;
         }
         
-        //To move enemy to player
-       /* if(Vector2.Distance(transform.position, target.position)> distanceToPlayer ){
-        transform.position= Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime );
-        }
-        //Near enough but not to near he is supoosed to stop
-        /*else if (Vector2.Distance(transform.position, target.position)< distanceToPlayer && Vector2.Distance(transform.position, target.position)> retreatDistance){
-            transform.position=this.transform.position;
-        }*/
-        
-        //Follows player up to a certain range and then attacks
         if (player != null) {
             
             float distance = Vector2.Distance(transform.position, player.position);
@@ -68,8 +51,6 @@ public class SlashingEnemyController : MonoBehaviour
         }
 
     }
-
-    //Method to attack
      IEnumerator Attack()
     {
         canAttack = false;
@@ -86,8 +67,6 @@ public class SlashingEnemyController : MonoBehaviour
         animator.SetBool("isAttacking", false);
         canAttack = true;
     }
-
-    // Enemy takes damage when it collides with  player bullet
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bullet")
@@ -95,7 +74,6 @@ public class SlashingEnemyController : MonoBehaviour
             TakeDamage(20);
         } 
     }
-
     private void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -106,7 +84,4 @@ public class SlashingEnemyController : MonoBehaviour
            Debug.Log("Demon killed");
         }
     }
-
-
-    
 }
