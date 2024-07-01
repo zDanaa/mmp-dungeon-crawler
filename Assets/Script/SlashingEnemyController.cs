@@ -13,12 +13,9 @@ public class SlashingEnemyController : EnemyController
     private Animator animator;
     void Start()
     {  
-        maxHealth = 100;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        speed = 1f;
-        damage = 10;
         animator = GetComponent<Animator>(); 
         rb = GetComponent<Rigidbody2D>();      
     }

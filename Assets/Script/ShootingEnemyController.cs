@@ -16,12 +16,7 @@ public class ShootingEnemyController : EnemyController
 
     void Start()
     {
-        maxHealth = 100;
         currentHealth = maxHealth;
-        speed = 1f;
-        fireRate = 1f;
-        dangerZone = 3f;
-        safeZone = 6f;
         healthBar.SetMaxHealth(maxHealth);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }

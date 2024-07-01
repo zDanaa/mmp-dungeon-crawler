@@ -10,7 +10,6 @@ public class EnemyController : MonoBehaviour
     public HealthBarScript healthBar;
     public Transform target;
     public float speed;
-
     public float damage;
 
     void Start()
