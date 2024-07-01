@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
         if (collision.tag == "Bullet")
         {
             TakeDamage(20);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -33,12 +34,10 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if (currentHealth <= 0) { Die(); }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject); 
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

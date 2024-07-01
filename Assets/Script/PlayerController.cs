@@ -16,22 +16,15 @@ public class PlayerController : MonoBehaviour
     private float lastFire;
     public float fireDelay = 0.5f;
     private Coroutine fireRateCoroutine;
-
     private bool volleyActive = false;
-
     public float maxHealth = 100;
     public float currentHealth;
     public HealthBarScript healthBar;
     // Start is called before the first frame update
-
     //Von Lilli
     [SerializeField]
-
     public GameManager gameManager;
-
     private bool isDead;
-    private int health = 5;
-
     
     void Start()
     {

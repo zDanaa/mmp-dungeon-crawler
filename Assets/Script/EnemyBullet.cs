@@ -7,13 +7,9 @@ public class EnemyBullet : MonoBehaviour
 
     private GameObject player;
     private Rigidbody2D rb;
-
     [SerializeField]
     private float force;
-
     private float timer;
-
-    //Audio
     private AudioSource e_bulletSound;
 
     void Start()
