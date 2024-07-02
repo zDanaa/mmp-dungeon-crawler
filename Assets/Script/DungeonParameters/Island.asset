@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Island
   m_EditorClassIdentifier: 
   iterations: 100
-  pathLength: 20
+  pathLength: 40
   randomStartEachIteration: 0
