@@ -11,7 +11,8 @@ public abstract class AbstractDungeonGenerator : MonoBehaviour
 
     public void Start()
     {
-        GenerateDungeon();
+        //GenerateDungeon();
+        
     }
     public void GenerateDungeon()
     {
