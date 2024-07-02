@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public float currentHealth;
     public HealthBarScript healthBar;
     public Transform target;
+    public SpriteRenderer spriteRenderer;
     public float speed;
     public float damage;
 
@@ -36,6 +37,18 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void setSpriteFlip(Vector2 direction)
+    {
+        if (direction.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
         }
     }
 }
