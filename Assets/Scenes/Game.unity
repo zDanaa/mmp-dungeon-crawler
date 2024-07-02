@@ -9868,7 +9868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemapVisualizer: {fileID: 10248769}
-  startingPoint: {x: -20, y: -20}
+  startingPoint: {x: -10, y: -10}
   randomWalkData: {fileID: 11400000, guid: 3191db1f7c732bc49aa548a84923fbda, type: 2}
   minRoomWidth: 15
   minRoomHeight: 15
@@ -12860,7 +12860,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2086435738, guid: 7694971d2c7c94010bc94b299cc00a91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
