@@ -14,7 +14,7 @@ public class SlashingEnemyController : EnemyController
     private bool isAttacking = false;
 
     void Start()
-    {  
+    {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -67,7 +67,7 @@ public class SlashingEnemyController : EnemyController
 
         if (player != null)
         {
-            player.TakeDamage(damage); 
+            player.TakeDamage(damage);
         }
 
         isAttacking = false;

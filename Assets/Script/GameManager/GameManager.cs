@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         float remainingTime = gameTime;
         while (remainingTime > 0)
         {
-            if (Mathf.Approximately(remainingTime, miniBossSpawnTime)) 
+            if (Mathf.Approximately(remainingTime, miniBossSpawnTime))
             {
                 SpawnMiniBoss();
             }
@@ -49,18 +49,25 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player has won the game!");
     }
 
-    public void gameOver(){
+    public void gameOver()
+    {
+        Time.timeScale = 0f;
         gameOverUI.SetActive(true);
     }
-    public void RestartGame(){
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
     }
 
-    public void MainMenu(){
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 
-    public void QuitGame(){
+    public void QuitGame()
+    {
         Application.Quit();
     }
 }
