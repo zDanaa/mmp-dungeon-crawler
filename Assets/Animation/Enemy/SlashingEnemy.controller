@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SlashingAnimation
-  m_Speed: 0.04
+  m_Speed: 0.33
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1240806407307364265}
