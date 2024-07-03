@@ -1,53 +1,76 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SlashingEnemyController : EnemyController
 {
-    [SerializeField]
-    private Rigidbody2D rb;
-    public float attackCooldown = 2.0f; 
-    public float stopDistance = 0.5f;
-    private bool canAttack = true;
-    private Animator animator;
+    [SerializeField] private Rigidbody2D rb;
+    public float attackCooldown; 
+    public float attackDuration;
+    public float meleeRange; 
+    public float aggroRange;
+    private bool isPlayerInRange;
+    private PlayerController player;
+    private float attackTimer;
+    private bool isAttacking = false;
+
     void Start()
     {  
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = target.GetComponent<PlayerController>();
         animator = GetComponent<Animator>(); 
-        rb = GetComponent<Rigidbody2D>();      
+        rb = GetComponent<Rigidbody2D>();
+        attackTimer = attackCooldown;
     }
+
     void Update()
     {
-        if (target == null){
-            return;
-        }
-         
+        if (target == null) return;
+
+        attackTimer += Time.deltaTime;
+        isPlayerInRange = Vector2.Distance(transform.position, target.position) <= aggroRange;
+        
         float distance = Vector2.Distance(transform.position, target.position);
-        if (distance > stopDistance)
+        Vector2 direction = (target.position - transform.position).normalized;
+        setSpriteFlip(direction);
+
+        if (distance > meleeRange && !isAttacking && isPlayerInRange)
         {
-            animator.SetBool("isAttacking", false);
-            Vector2 direction = (target.position - transform.position).normalized;
-            transform.Translate(direction * speed * Time.deltaTime);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Walk", true);
+            ChasePlayer(direction);
         }
-        else if (canAttack){            
-            StartCoroutine(Attack());
+        if (attackTimer >= attackCooldown && !isAttacking && distance <= meleeRange)
+        {   
+            animator.SetBool("Idle", false);
+            animator.SetBool("Walk", false);
+            Attack();
+        }
+        if (!isPlayerInRange)
+        {
+            animator.SetBool("Idle", true);
+            animator.SetBool("Walk", false);
         }
     }
-     IEnumerator Attack()
+
+    void ChasePlayer(Vector2 direction)
     {
-        canAttack = false;
-        animator.SetBool("isAttacking", true);
-        PlayerController player = target.GetComponent<PlayerController>();
+        transform.Translate(speed * Time.deltaTime * direction);
+    }
+
+    void Attack()
+    {
+        isAttacking = true;
+        attackTimer = 0f;
+        animator.SetBool("Attack", true); 
+
         if (player != null)
         {
             player.TakeDamage(damage); 
         }
-        
-        yield return new WaitForSeconds(attackCooldown);
-        animator.SetBool("isAttacking", false);
-        canAttack = true;
+
+        isAttacking = false;
+        animator.SetBool("Attack", false);
     }
 }

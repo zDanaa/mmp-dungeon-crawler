@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.005, y: 0.075}
+  m_AnchoredPosition: {x: 0.007, y: 0.118}
   m_SizeDelta: {x: 43.757, y: 8.6968}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8097039737195477685
@@ -133,8 +133,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.78, y: -2.38, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5.082, y: 5.082, z: 0.847}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8347867255052257474}
   m_Father: {fileID: 0}
@@ -180,12 +180,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8529c736119d646dcb37b90052aa0392, type: 3}
+  m_Sprite: {fileID: 617172063, guid: e72093a5ba4ccf54e88f09599b7df35b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8}
+  m_Size: {x: 0.4, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -207,11 +207,15 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 579686612220480166}
   target: {fileID: 0}
-  speed: 4
-  damage: 10
-  rb: {fileID: 0}
+  spriteRenderer: {fileID: 5057538952290214043}
+  animator: {fileID: 0}
+  speed: 1.6
+  damage: 20
+  rb: {fileID: 6824303647802751263}
   attackCooldown: 1
-  stopDistance: 1
+  attackDuration: 0.5
+  meleeRange: 1
+  aggroRange: 8
 --- !u!50 &6824303647802751263
 Rigidbody2D:
   serializedVersion: 4
@@ -224,7 +228,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -271,18 +275,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03209555, y: -0.16806178}
+  m_Offset: {x: 0.01, y: -0.06}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8}
-    newSize: {x: 1, y: 0.8}
+    oldSize: {x: 0.4, y: 0.4}
+    newSize: {x: 0.4, y: 0.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29321605, y: 0.50120294}
+  m_Size: {x: 0.23, y: 0.26}
   m_EdgeRadius: 0
 --- !u!95 &3620571234962254466
 Animator:
@@ -492,7 +496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.056}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000071525574, y: -0.0000018179417}
+  m_AnchoredPosition: {x: 3.8, y: 19.7}
   m_SizeDelta: {x: 355.418, y: 80.107}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7238268427208031238
