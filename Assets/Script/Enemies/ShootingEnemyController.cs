@@ -9,8 +9,6 @@ public class ShootingEnemyController : EnemyController
     [SerializeField]
     public float dangerZone;
     public float safeZone;
-    public float fireRate;
-    public float timer;
     public GameObject bullet;
     public Transform bulletPos;
 
@@ -46,10 +44,10 @@ public class ShootingEnemyController : EnemyController
             transform.position = Vector2.MoveTowards(transform.position, target.position, (speed / 2) * Time.deltaTime);
         }
 
-        timer += Time.deltaTime;
-        if (timer > fireRate)
+        attackTimer += Time.deltaTime;
+        if (attackTimer > attackCooldown)
         {
-            timer = 0;
+            attackTimer = 0;
             Shoot();
         }
     }
