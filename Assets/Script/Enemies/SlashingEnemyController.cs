@@ -3,14 +3,10 @@ using UnityEngine;
 
 public class SlashingEnemyController : EnemyController
 {
-    [SerializeField] private Rigidbody2D rb;
-    public float attackCooldown; 
+    [SerializeField]
     public float attackDuration;
     public float meleeRange; 
-    public float aggroRange;
-    private bool isPlayerInRange;
     private PlayerController player;
-    private float attackTimer;
     private bool isAttacking = false;
 
     void Start()
@@ -20,7 +16,6 @@ public class SlashingEnemyController : EnemyController
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         player = target.GetComponent<PlayerController>();
         animator = GetComponent<Animator>(); 
-        rb = GetComponent<Rigidbody2D>();
         attackTimer = attackCooldown;
     }
 
@@ -29,7 +24,7 @@ public class SlashingEnemyController : EnemyController
         if (target == null) return;
 
         attackTimer += Time.deltaTime;
-        isPlayerInRange = Vector2.Distance(transform.position, target.position) <= aggroRange;
+        bool isPlayerInRange = Vector2.Distance(transform.position, target.position) <= aggroRange;
         
         float distance = Vector2.Distance(transform.position, target.position);
         Vector2 direction = (target.position - transform.position).normalized;
@@ -43,8 +38,6 @@ public class SlashingEnemyController : EnemyController
         }
         if (attackTimer >= attackCooldown && !isAttacking && distance <= meleeRange)
         {   
-            animator.SetBool("Idle", false);
-            animator.SetBool("Walk", false);
             Attack();
         }
         if (!isPlayerInRange)
@@ -61,16 +54,22 @@ public class SlashingEnemyController : EnemyController
 
     void Attack()
     {
-        isAttacking = true;
-        attackTimer = 0f;
-        animator.SetBool("Attack", true); 
+        StartCoroutine(AttackRoutine());
+    }
 
-        if (player != null)
-        {
-            player.TakeDamage(damage);
-        }
+    IEnumerator AttackRoutine()
+    {
+        attackTimer = 0;
+        isAttacking = true;
+        animator.SetBool("Attack", true); // Start the attack animation
+
+        yield return new WaitForSeconds(attackDuration); // Wait for the animation to play through
+
+        player.TakeDamage(damage);
+
+        animator.SetBool("Attack", false); // End the attack animation
+        yield return new WaitForSeconds(attackCooldown - attackDuration); // Cooldown before next attack
 
         isAttacking = false;
-        animator.SetBool("Attack", false);
     }
 }
