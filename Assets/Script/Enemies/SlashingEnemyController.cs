@@ -61,14 +61,14 @@ public class SlashingEnemyController : EnemyController
     {
         attackTimer = 0;
         isAttacking = true;
-        animator.SetBool("Attack", true); // Start the attack animation
+        animator.SetBool("Attack", true); 
 
-        yield return new WaitForSeconds(attackDuration); // Wait for the animation to play through
+        yield return new WaitForSeconds(attackDuration); 
 
         player.TakeDamage(damage);
 
-        animator.SetBool("Attack", false); // End the attack animation
-        yield return new WaitForSeconds(attackCooldown - attackDuration); // Cooldown before next attack
+        animator.SetBool("Attack", false); 
+        yield return new WaitForSeconds(attackCooldown - attackDuration); 
 
         isAttacking = false;
     }
