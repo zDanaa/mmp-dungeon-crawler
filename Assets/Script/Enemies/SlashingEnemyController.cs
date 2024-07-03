@@ -6,7 +6,6 @@ public class SlashingEnemyController : EnemyController
     [SerializeField]
     public float attackDuration;
     public float meleeRange; 
-    private PlayerController player;
     private bool isAttacking = false;
 
     void Start()
