@@ -12,6 +12,9 @@ public class EnemyController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public float speed;
+    public float attackTimer;
+    public float attackCooldown;
+    public float aggroRange;
     public float damage;
 
     void Start()

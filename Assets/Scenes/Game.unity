@@ -375,11 +375,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 523291a41886c2c4d9b46d152041f286, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2241,16 +2241,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 167114791066896746, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 1701484061}
-    - target: {fileID: 167114791066896746, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: speed
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 167114791066896746, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: stopDistance
-      value: 1.45
+      propertyPath: aggroRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2998038489356791927, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_Name
@@ -2263,18 +2255,6 @@ PrefabInstance:
     - target: {fileID: 4118909665995773373, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819446831148221950, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5.082
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819446831148221950, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5.082
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819446831148221950, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.847
       objectReference: {fileID: 0}
     - target: {fileID: 7819446831148221950, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2317,10 +2297,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8637443249433402311, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: m_Size.x
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 8637443249433402311, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_Size.y
       value: 0.26
       objectReference: {fileID: 0}
@@ -2331,10 +2307,6 @@ PrefabInstance:
     - target: {fileID: 8637443249433402311, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_Offset.y
       value: -0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 8637443249433402311, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4644,11 +4616,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a331ff722544f89419de9c0168c16aca, type: 3}
---- !u!50 &1701484061 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 6824303647802751263, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-  m_PrefabInstance: {fileID: 982478210}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1806166673
 GameObject:
   m_ObjectHideFlags: 0
