@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     private bool isDead;
 
+    //Audio
+    [SerializeField]
+    private float volleyVolume = 0.2f;
+    private float oldVolume;
+    private AudioSource audioSourceBullet;
+
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -127,6 +133,9 @@ public class PlayerController : MonoBehaviour
     {
         volleyActive = true;
         int iterations = 6;
+        audioSourceBullet = bulletPrefab.GetComponent<AudioSource>();
+        oldVolume = audioSourceBullet.volume;
+        audioSourceBullet.volume = volleyVolume;
         StartCoroutine(BulletVolley(iterations));
     }
 
@@ -145,6 +154,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireDelay);
         }
         volleyActive = false;
+        audioSourceBullet.volume = oldVolume;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
