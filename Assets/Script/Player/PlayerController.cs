@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         int iterations = 6;
         audioSourceBullet = bulletPrefab.GetComponent<AudioSource>();
         oldVolume = audioSourceBullet.volume;
-        audioSourceBullet.volume= volleyVolume;
+        audioSourceBullet.volume = volleyVolume;
         StartCoroutine(BulletVolley(iterations));
     }
 
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireDelay);
         }
         volleyActive = false;
-        audioSourceBullet.volume=oldVolume;
+        audioSourceBullet.volume = oldVolume;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

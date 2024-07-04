@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Text timerText;
 
     public GameObject gameOverUI;
+    public GameObject endGameUI;
 
     void Start()
     {
@@ -39,13 +40,16 @@ public class GameManager : MonoBehaviour
         PlayerWins();
     }
 
-    void SpawnMiniBoss()
+    public void SpawnMiniBoss()
     {
         print("Spawning mini boss");
     }
 
-    void PlayerWins()
+
+    public void PlayerWins()
     {
+        Time.timeScale = 0f;
+        endGameUI.SetActive(true);
         Debug.Log("Player has won the game!");
     }
 
