@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float fireDelay;
     private Coroutine fireRateCoroutine;
     private bool volleyActive = false;
-    public float maxHealth = 100;
+    public float maxHealth;
     public static float currentHealth;
     public HealthBarScript healthBar;
     // Start is called before the first frame update
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
             string itemID = collision.GetComponent<ItemController>().ID;
             if (itemID == "health")
             {
-                Heal(40);
+                Heal(50);
             }
             if (itemID == "fireRate")
             {

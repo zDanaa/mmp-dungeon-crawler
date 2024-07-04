@@ -9,7 +9,7 @@ public class EnemyBullet : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private float force;
-    private float timer;
+    public float lifeTime;
     private AudioSource e_bulletSound;
 
     void Start()
@@ -26,18 +26,21 @@ public class EnemyBullet : MonoBehaviour
             float rotate = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rotate + 90);
         }
+        StartCoroutine(DeathDelay());
         e_bulletSound.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+       
+    }
 
-        if (timer > 6)
-        {
-            Destroy(gameObject);
-        }
+     IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        Destroy(gameObject);
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

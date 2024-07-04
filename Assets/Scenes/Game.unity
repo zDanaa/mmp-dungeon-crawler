@@ -26213,6 +26213,10 @@ PrefabInstance:
       propertyPath: receiveDamage
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8175507597925705480, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
