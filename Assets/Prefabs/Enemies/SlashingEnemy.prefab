@@ -213,7 +213,7 @@ MonoBehaviour:
   speed: 3
   attackTimer: 0
   attackCooldown: 1
-  aggroRange: 15
+  aggroRange: 10
   receiveDamage: 20
   damage: 20
   attackDuration: 0.5

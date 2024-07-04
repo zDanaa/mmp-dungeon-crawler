@@ -523,7 +523,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.95, y: -0.43, z: 0}
-  m_LocalScale: {x: 4.2, y: 4.2, z: 0.84}
+  m_LocalScale: {x: 4.16, y: 4.16, z: 0.83199996}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5275515355474597275}
@@ -598,13 +598,13 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 5984611250856329033}
   target: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 8498968297684269345}
   player: {fileID: 0}
   animator: {fileID: 1096388399846525238}
   speed: 3
   attackTimer: 0
   attackCooldown: 1
-  aggroRange: 0
+  aggroRange: 10
   receiveDamage: 30
   damage: 0
   dangerZone: 3

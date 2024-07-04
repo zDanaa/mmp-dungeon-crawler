@@ -22841,17 +22841,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826149615}
   m_CullTransparentMesh: 1
---- !u!114 &841001560 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5984611250856329033, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-  m_PrefabInstance: {fileID: 1840958066}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da99a98f0c05429797997c108d24cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &873861194
 GameObject:
   m_ObjectHideFlags: 0
@@ -23519,16 +23508,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 167114791066896746, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 167114791066896746, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: aggroRange
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 167114791066896746, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: receiveDamage
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2998038489356791927, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_Name
@@ -25170,7 +25151,7 @@ Transform:
   m_GameObject: {fileID: 1407455860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6, y: 0.17, z: 0}
+  m_LocalPosition: {x: -1.89, y: 6.31, z: 0}
   m_LocalScale: {x: 4.2089353, y: 3.742837, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26185,41 +26166,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6684502834746125511, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684502834746125511, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1407455864}
     - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1840958068}
-    - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 841001560}
-    - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: aggroRange
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: receiveDamage
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: attackCooldown
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8175507597925705480, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_AnchorMax.x
@@ -26233,21 +26186,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8498968297684269345, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -510220112, guid: 9c89a746f6a543046b20018735d39104, type: 3}
     - target: {fileID: 8687796238277925195, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.2
+      value: 4.16
       objectReference: {fileID: 0}
     - target: {fileID: 8687796238277925195, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.2
+      value: 4.16
       objectReference: {fileID: 0}
     - target: {fileID: 8687796238277925195, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.84
+      value: 0.83199996
       objectReference: {fileID: 0}
     - target: {fileID: 8687796238277925195, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26289,44 +26238,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8687796238277925195, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8341293997310063816, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1840958068}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
---- !u!1 &1840958067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8341293997310063816, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
-  m_PrefabInstance: {fileID: 1840958066}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1840958068
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840958067}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 489f900cab5e7304fbb7c01ee9f6d4ec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1855897319
 GameObject:
   m_ObjectHideFlags: 0
