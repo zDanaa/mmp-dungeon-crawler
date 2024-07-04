@@ -10,7 +10,12 @@ public class EnemyController : MonoBehaviour
     public HealthBarScript healthBar;
     public Transform target;
     public SpriteRenderer spriteRenderer;
+    public PlayerController player;
+    public Animator animator;
     public float speed;
+    public float attackTimer;
+    public float attackCooldown;
+    public float aggroRange;
     public float damage;
 
     void Start()

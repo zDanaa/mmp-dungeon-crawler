@@ -21,9 +21,6 @@ public class SpawnerScript : MonoBehaviour
             int random = Random.Range(0, spawnableObjects.Length);
             GameObject spawningEnemies = spawnableObjects[random];
             Instantiate(spawningEnemies, transform.position, Quaternion.identity);
-           
-            Debug.Log("Spawned: " + spawningEnemies.name);
-
         }
     }
     public void StopSpawning()

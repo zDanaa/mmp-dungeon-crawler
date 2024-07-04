@@ -18,20 +18,20 @@ public class PlayerController : MonoBehaviour
     private Coroutine fireRateCoroutine;
     private bool volleyActive = false;
     public float maxHealth = 100;
-    public float currentHealth;
+    public static float currentHealth;
     public HealthBarScript healthBar;
     // Start is called before the first frame update
     //Von Lilli
     [SerializeField]
     public GameManager gameManager;
     private bool isDead;
-    
+
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        
+
     }
 
     // Update is called once per frame
@@ -83,8 +83,8 @@ public class PlayerController : MonoBehaviour
             (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y),
             0
         ).normalized * bulletSpeed;
-        
-        
+
+
     }
 
 
@@ -93,10 +93,10 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0 && !isDead)
-        { 
+        {
             isDead = true;
             gameManager.gameOver();
-            Die(); 
+            Die();
         }
     }
 
