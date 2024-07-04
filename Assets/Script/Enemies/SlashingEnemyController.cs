@@ -22,13 +22,12 @@ public class SlashingEnemyController : EnemyController
         if (target == null) return;
 
         attackTimer += Time.deltaTime;
-        bool isPlayerInRange = Vector2.Distance(transform.position, target.position) <= aggroRange;
         
         float distance = Vector2.Distance(transform.position, target.position);
         Vector2 direction = (target.position - transform.position).normalized;
-        setSpriteFlip(direction);
+        setSpriteFlip(direction, 1);
 
-        if (distance > meleeRange && !isAttacking && isPlayerInRange)
+        if (distance > meleeRange && !isAttacking && distance <= aggroRange)
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
@@ -38,7 +37,7 @@ public class SlashingEnemyController : EnemyController
         {   
             Attack();
         }
-        if (!isPlayerInRange)
+        if (distance > aggroRange)
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);

@@ -46,8 +46,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void setSpriteFlip(Vector2 direction)
+    public void setSpriteFlip(Vector2 direction, int initialFlip)
     {
+        direction = initialFlip * direction;
         if (direction.x > 0)
         {
             spriteRenderer.flipX = true;
