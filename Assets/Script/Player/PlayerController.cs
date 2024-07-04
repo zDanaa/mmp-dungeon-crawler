@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed;
     private float lastFire;
-    public float fireDelay = 0.5f;
+    public float decreaseFireDelay;
+    public float fireDelay;
     private Coroutine fireRateCoroutine;
     private bool volleyActive = false;
     public float maxHealth = 100;
@@ -112,14 +113,14 @@ public class PlayerController : MonoBehaviour
         {
             StopCoroutine(fireRateCoroutine);
         }
-        fireDelay -= 0.2f;
+        fireDelay -= decreaseFireDelay;
         fireRateCoroutine = StartCoroutine(ResetFireRateAfterDelay(5));
     }
 
-    private IEnumerator ResetFireRateAfterDelay(float delay)
+    private IEnumerator ResetFireRateAfterDelay(float delayTime)
     {
-        yield return new WaitForSeconds(delay);
-        fireDelay = 0.5f;
+        yield return new WaitForSeconds(delayTime);
+        fireDelay += decreaseFireDelay;
     }
 
     private void StartBulletVolley()
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            TakeDamage(20);
+            TakeDamage(10);
         }
     }
 

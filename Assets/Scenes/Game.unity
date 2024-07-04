@@ -25112,6 +25112,7 @@ MonoBehaviour:
   collectedText: {fileID: 779461775}
   bulletPrefab: {fileID: 9204394723720661615, guid: 58d74ab1d4bd54f83943330a7b6f78c6, type: 3}
   bulletSpeed: 7
+  decreaseFireDelay: 0.4
   fireDelay: 0.5
   maxHealth: 400
   healthBar: {fileID: 1298799496}
@@ -26207,6 +26208,10 @@ PrefabInstance:
     - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: aggroRange
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438079617277207818, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
+      propertyPath: receiveDamage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8175507597925705480, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_AnchorMax.x
