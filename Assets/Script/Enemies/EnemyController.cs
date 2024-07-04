@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     public float attackTimer;
     public float attackCooldown;
     public float aggroRange;
-    public float damage;
+    public float receiveDamage;
 
     void Start()
     {
@@ -30,14 +30,14 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.tag == "Bullet")
         {
-            TakeDamage(20);
+            TakeDamage(receiveDamage);
             Destroy(collision.gameObject);
         }
     }
 
     private void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        currentHealth -= receiveDamage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {

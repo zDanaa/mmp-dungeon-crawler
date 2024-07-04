@@ -7,6 +7,7 @@ public class SlashingEnemyController : EnemyController
     public float attackDuration;
     public float meleeRange; 
     private bool isAttacking = false;
+    public float attackDamage;
 
     void Start()
     {
@@ -64,7 +65,7 @@ public class SlashingEnemyController : EnemyController
 
         yield return new WaitForSeconds(attackDuration); 
 
-        player.TakeDamage(damage);
+        player.TakeDamage(attackDamage);
 
         animator.SetBool("Attack", false); 
         yield return new WaitForSeconds(attackCooldown - attackDuration); 
