@@ -5,13 +5,13 @@ using UnityEngine;
 public class BackgroundMusic : MonoBehaviour
 {
     public static BackgroundMusic instance;
-    AudioSource audio;
+    AudioSource new_audio;
     float musicVolume = 1f;
     // Start is called before the first frame update
     public void Awake()
     {
 
-        audio = GetComponent<AudioSource>();
+        new_audio = GetComponent<AudioSource>();
 
         if (instance == null)
         {
@@ -27,7 +27,7 @@ public class BackgroundMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        audio.volume = musicVolume;
+        new_audio.volume = musicVolume;
 
     }
 
