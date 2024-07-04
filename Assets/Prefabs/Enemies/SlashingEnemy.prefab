@@ -210,10 +210,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5057538952290214043}
   player: {fileID: 0}
   animator: {fileID: 0}
-  speed: 1.6
+  speed: 3
   attackTimer: 0
   attackCooldown: 1
-  aggroRange: 10
+  aggroRange: 15
+  receiveDamage: 20
   damage: 20
   attackDuration: 0.5
   meleeRange: 1

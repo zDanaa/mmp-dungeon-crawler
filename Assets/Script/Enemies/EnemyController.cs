@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     public float attackCooldown;
     public float aggroRange;
     public float receiveDamage;
+    public float damage;
 
     void Start()
     {

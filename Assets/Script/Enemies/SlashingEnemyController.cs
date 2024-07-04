@@ -7,8 +7,6 @@ public class SlashingEnemyController : EnemyController
     public float attackDuration;
     public float meleeRange; 
     private bool isAttacking = false;
-    public float attackDamage;
-
     void Start()
     {
         currentHealth = maxHealth;
@@ -65,7 +63,7 @@ public class SlashingEnemyController : EnemyController
 
         yield return new WaitForSeconds(attackDuration); 
 
-        player.TakeDamage(attackDamage);
+        player.TakeDamage(damage);
 
         animator.SetBool("Attack", false); 
         yield return new WaitForSeconds(attackCooldown - attackDuration); 
