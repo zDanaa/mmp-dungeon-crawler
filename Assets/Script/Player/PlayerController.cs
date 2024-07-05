@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public GameManager gameManager;
     private bool isDead;
+    public InputManager inputManager;
 
     //Audio
     [SerializeField]
@@ -44,8 +45,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = 0, vertical = 0;
+        if (Input.GetKey(inputManager.forward))
+        {
+            vertical = 1;
+        }
+        if (Input.GetKey(inputManager.backward))
+        {
+            vertical = -1;
+        }
+        if (Input.GetKey(inputManager.right))
+        {
+            horizontal = 1;
+        }
+        if (Input.GetKey(inputManager.left))
+        {
+            horizontal = -1;
+        }
+
         Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
         playerBody.velocity = movement * playerSpeed;
         collectedText.text = "Item Collected:" + collectedAmount;
@@ -67,9 +84,23 @@ public class PlayerController : MonoBehaviour
             GetComponent<Animator>().Play("Down");
         }
 
-        float shootHor = Input.GetAxisRaw("ShootHorizontal");
-        float shootVer = Input.GetAxisRaw("ShootVertical");
-
+        float shootHor = 0, shootVer = 0;
+        if (Input.GetKey(inputManager.fireForward))
+        {
+            shootVer = 1;
+        }
+        if (Input.GetKey(inputManager.fireBackward))
+        {
+            shootVer = -1;
+        }
+        if (Input.GetKey(inputManager.fireRight))
+        {
+            shootHor = 1;
+        }
+        if (Input.GetKey(inputManager.fireLeft))
+        {
+            shootHor = -1;
+        }
         if ((shootHor != 0 || shootVer != 0) &&
              Time.time > lastFire + fireDelay &&
              currentHealth > 0 &&
