@@ -17,6 +17,7 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
         = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
 
     private HashSet<Vector2Int> floorPoints, corridorPoints;
+
     private List <Color> roomColors = new List<Color>();
     [SerializeField]
     private bool showRoomGizmo = false, showCorridorsGizmo;
