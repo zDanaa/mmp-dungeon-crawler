@@ -34,6 +34,7 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
             corridorPoints = this.corridorPoints,
             floorPoints = this.floorPoints
         };
+        OnDungeonFloorReady?.Invoke(data);
     }
 
     private void CorridorInitialDungeonGeneration()
