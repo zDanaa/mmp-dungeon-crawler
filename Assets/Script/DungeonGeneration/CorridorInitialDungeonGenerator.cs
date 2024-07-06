@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
 {
@@ -22,9 +23,17 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
     [SerializeField]
     private bool showRoomGizmo = false, showCorridorsGizmo;
 
+    public UnityEvent<DungeonData> OnDungeonFloorReady;
+
     protected override void startProceduralGeneration()
     {
         CorridorInitialDungeonGeneration();
+        DungeonData data = new DungeonData
+        {
+            roomsDictionary = this.roomsDictionary,
+            corridorPoints = this.corridorPoints,
+            floorPoints = this.floorPoints
+        };
     }
 
     private void CorridorInitialDungeonGeneration()
