@@ -13,6 +13,14 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
     [Range(0.1f, 1)]
     private float roomPercentage = 0.9f;
 
+    private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary
+        = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+
+    private HashSet<Vector2Int> floorPoints, corridorPoints;
+    private List <Color> roomColors = new List<Color>();
+    [SerializeField]
+    private bool showRoomGizmo = false, showCorridorsGizmo;
+
     protected override void startProceduralGeneration()
     {
         CorridorInitialDungeonGeneration();
@@ -99,13 +107,27 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
         int roomToCreateCount = Mathf.RoundToInt(roomPercentage * potentialRoomPoints.Count);
 
         List<Vector2Int> roomsToCreate = potentialRoomPoints.OrderBy(x => Guid.NewGuid()).Take(roomToCreateCount).ToList();
-
+        ClearRoomData();
         foreach (var roomPoint in roomsToCreate) 
         {
             var roomFloor = startRandomWalk(randomWalkData, roomPoint);
+
+            SaveRoomData(roomPoint, roomFloor);
             roomPoints.UnionWith(roomFloor);
         }
         return roomPoints;
+    }
+
+    private void SaveRoomData(Vector2Int roomPoint, HashSet<Vector2Int> roomFloor)
+    {
+        roomsDictionary[roomPoint] = roomFloor;
+        roomColors.Add(UnityEngine.Random.ColorHSV());
+    }
+
+    private void ClearRoomData()
+    {
+        roomsDictionary.Clear();
+        roomColors.Clear();
     }
 
     private List<List<Vector2Int>> CreateCorridors(HashSet<Vector2Int> floorpoints, HashSet<Vector2Int> potentialRoomPoints)
@@ -123,6 +145,7 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
             potentialRoomPoints.Add(currentPoint);
             floorpoints.UnionWith(corridor);
         }
+        corridorPoints = new HashSet<Vector2Int>(floorpoints);
         return corridors;
     }
 }
