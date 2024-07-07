@@ -66,7 +66,7 @@ public class PrefabPlacer : MonoBehaviour
         newItem.GetComponent<Item>().Initialize(item);
         return newItem;
     }
-    private GameObject CreateObject(GameObject prefab, Vector2 placementPoint)
+    public GameObject CreateObject(GameObject prefab, Vector2 placementPoint)
     {
         if(prefab == null) 
         {
