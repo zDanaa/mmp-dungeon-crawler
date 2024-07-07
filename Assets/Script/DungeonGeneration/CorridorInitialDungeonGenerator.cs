@@ -9,7 +9,7 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
 {
     [SerializeField]
     private int corridorLength = 14, corridorCount = 7;
-
+    public List<List<Vector2Int>> corridors;
     [SerializeField]
     [Range(0.1f, 1)]
     private float roomPercentage = 0.9f;
@@ -41,18 +41,18 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
     {
         floorPoints = new HashSet<Vector2Int>();
         HashSet<Vector2Int> potentialRoomPoints = new HashSet<Vector2Int>();
-        List<List<Vector2Int>> corridors = CreateCorridors(floorPoints, potentialRoomPoints);
+        corridors = CreateCorridors(floorPoints, potentialRoomPoints);
 
 
 
-        GenerateRooms(potentialRoomPoints, corridors);
+        GenerateRooms(potentialRoomPoints);
 
 
         //tilemapVisualizer.PaintFloorTiles(floorpoints);
         //WallGenerator.GenerateWalls(floorpoints, tilemapVisualizer);
     }
 
-    private void GenerateRooms(HashSet<Vector2Int> potentialRoomPoints, List<List<Vector2Int>> corridors)
+    private void GenerateRooms(HashSet<Vector2Int> potentialRoomPoints)
     {
         HashSet<Vector2Int> roomPoints = CreateRooms(potentialRoomPoints);
         List<Vector2Int> deadEnds = SelectDeadEnds(floorPoints);
@@ -84,7 +84,19 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
         return newCorridor;
     }
 
-
+    private IEnumerator GenerateRoomsCoroutine(HashSet<Vector2Int> potentialRoomPoints)
+    {
+        yield return new WaitForSeconds(2);
+        tilemapVisualizer.Clear();
+        GenerateRooms(potentialRoomPoints);
+        DungeonData data = new DungeonData()
+        {
+            roomsDictionary = this.roomsDictionary,
+            corridorPoints = this.corridorPoints,
+            floorPoints = this.floorPoints,
+        };
+        OnDungeonFloorReady?.Invoke(data);
+    }
     private void CreateRoomsAtDeadEnds(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomFloors)
     {
         foreach (var deadEnd in deadEnds)
