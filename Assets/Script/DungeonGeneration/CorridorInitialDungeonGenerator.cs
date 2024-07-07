@@ -39,28 +39,26 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
 
     private void CorridorInitialDungeonGeneration()
     {
-        HashSet<Vector2Int> floorpoints = new HashSet<Vector2Int>();
+        HashSet<Vector2Int> floorPoints = new HashSet<Vector2Int>();
         HashSet<Vector2Int> potentialRoomPoints = new HashSet<Vector2Int>();
+        GenerateRooms(potentialRoomPoints);
+    }
 
-
-        List<List<Vector2Int>> corridors = CreateCorridors(floorpoints, potentialRoomPoints);
-
+    private void GenerateRooms(HashSet<Vector2Int> potentialRoomPoints)
+    {
         HashSet<Vector2Int> roomPoints = CreateRooms(potentialRoomPoints);
-
-        List<Vector2Int> deadEnds = SelectDeadEnds(floorpoints);
-
+        List<Vector2Int> deadEnds = SelectDeadEnds(floorPoints);
         CreateRoomsAtDeadEnds(deadEnds, roomPoints);
-
-        floorpoints.UnionWith(roomPoints);
+        List<List<Vector2Int>> corridors = CreateCorridors(floorPoints, potentialRoomPoints);
+        floorPoints.UnionWith(roomPoints);
         for (int i = 0; i < corridors.Count; i++)
         {
             //corridors[i] = IncreaseCorridorSizeByOne(corridors[i]);
             corridors[i] = IncreaseCorridorBrush(corridors[i]);
-            floorpoints.UnionWith(corridors[i]);
+            floorPoints.UnionWith(corridors[i]);
         }
-
-        tilemapVisualizer.PaintFloorTiles(floorpoints);
-        WallGenerator.GenerateWalls(floorpoints, tilemapVisualizer);
+        tilemapVisualizer.PaintFloorTiles(floorPoints);
+        WallGenerator.GenerateWalls(floorPoints, tilemapVisualizer);
     }
 
     public List<Vector2Int> IncreaseCorridorBrush(List<Vector2Int> corridor)
