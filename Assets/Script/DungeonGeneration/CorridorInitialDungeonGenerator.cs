@@ -39,17 +39,24 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
 
     private void CorridorInitialDungeonGeneration()
     {
-        HashSet<Vector2Int> floorPoints = new HashSet<Vector2Int>();
+        floorPoints = new HashSet<Vector2Int>();
         HashSet<Vector2Int> potentialRoomPoints = new HashSet<Vector2Int>();
-        GenerateRooms(potentialRoomPoints);
+        List<List<Vector2Int>> corridors = CreateCorridors(floorPoints, potentialRoomPoints);
+
+
+
+        GenerateRooms(potentialRoomPoints, corridors);
+
+
+        //tilemapVisualizer.PaintFloorTiles(floorpoints);
+        //WallGenerator.GenerateWalls(floorpoints, tilemapVisualizer);
     }
 
-    private void GenerateRooms(HashSet<Vector2Int> potentialRoomPoints)
+    private void GenerateRooms(HashSet<Vector2Int> potentialRoomPoints, List<List<Vector2Int>> corridors)
     {
         HashSet<Vector2Int> roomPoints = CreateRooms(potentialRoomPoints);
         List<Vector2Int> deadEnds = SelectDeadEnds(floorPoints);
         CreateRoomsAtDeadEnds(deadEnds, roomPoints);
-        List<List<Vector2Int>> corridors = CreateCorridors(floorPoints, potentialRoomPoints);
         floorPoints.UnionWith(roomPoints);
         for (int i = 0; i < corridors.Count; i++)
         {
