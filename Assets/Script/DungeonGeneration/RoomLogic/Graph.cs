@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Graph : MonoBehaviour
+public class Graph
 {
     private static List<Vector2Int> neighbours4directions = new List<Vector2Int>
     {
@@ -33,26 +33,26 @@ public class Graph : MonoBehaviour
         graph = new List<Vector2Int>(vertices);
 
     }
-
-    public List<Vector2Int> GetNeighboursBasicDirections(Vector2Int startPoint)
+    public List<Vector2Int> GetNeighboursBasicDirections(Vector2Int startPosition)
     {
-        return GetNeighbours(startPoint, neighbours4directions);
-    }
-    public List<Vector2Int> GetNeighboursAllDirections(Vector2Int startPoint)
-    {
-        return GetNeighbours(startPoint, neighbours8directions);
+        return GetNeighbours(startPosition, neighbours4directions);
     }
 
-    private List<Vector2Int> GetNeighbours(Vector2Int startPoint, List<Vector2Int> neighboursOffsetList)
+    public List<Vector2Int> GetNeighboursAllDirections(Vector2Int startPosition)
+    {
+        return GetNeighbours(startPosition, neighbours8directions);
+    }
+
+
+    private List<Vector2Int> GetNeighbours(Vector2Int startPosition,
+        List<Vector2Int> neighboursOffsetList)
     {
         List<Vector2Int> neighbours = new List<Vector2Int>();
-        foreach(var neighbourDirection in neighboursOffsetList)
+        foreach (var neighbourDirection in neighboursOffsetList)
         {
-            Vector2Int potentialNeighbour = startPoint + neighbourDirection;
+            Vector2Int potentialNeighbour = startPosition + neighbourDirection;
             if (graph.Contains(potentialNeighbour))
-            {
                 neighbours.Add(potentialNeighbour);
-            }
         }
         return neighbours;
     }
