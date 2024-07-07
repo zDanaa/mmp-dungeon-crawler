@@ -176,4 +176,32 @@ public class CorridorInitialDungeonGenerator : SimpleRandomWalkMapGenerator
         corridorPoints = new HashSet<Vector2Int>(floorpoints);
         return corridors;
     }
+
+    private void OnDrawGizmos()
+    {
+        if (showRoomGizmo)
+        {
+            int i = 0;
+            foreach( var roomData in roomsDictionary)
+            {
+                Color color = roomColors[i];
+                color.a = 0.5f;
+                Gizmos.color = color;
+                Gizmos.DrawSphere((Vector2)roomData.Key, 0.5f);
+                foreach (var position in roomData.Value)
+                {
+                    Gizmos.DrawCube((Vector2)position + new Vector2(0.5f, 0.5f), Vector3.one);
+                }
+                i++;
+            }
+        }
+        if (showCorridorsGizmo && corridorPoints != null)
+        {
+            Gizmos.color = Color.magenta;
+            foreach (var corridorTile in corridorPoints)
+            {
+                Gizmos.DrawCube((Vector2)corridorTile + new Vector2(0.5f, 0.5f), Vector3.one);
+            }
+        }
+    }
 }
