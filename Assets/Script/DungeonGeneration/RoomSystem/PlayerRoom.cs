@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerRoom : RoomGenerator
 {
-    public GameObject player;
+    public GameObject Player;
 
     public List<ItemPlacementData> itemData;
 
@@ -28,7 +28,7 @@ public class PlayerRoom : RoomGenerator
         Vector2Int playerSpawnPoint = roomCenter;
 
         GameObject playerObject
-            = prefabPlacer.CreateObject(player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
+            = prefabPlacer.CreateObject(Player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
 
         placedObjects.Add(playerObject);
 
