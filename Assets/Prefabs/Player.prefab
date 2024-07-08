@@ -109,8 +109,8 @@ MonoBehaviour:
   fireDelay: 0.5
   maxHealth: 400
   healthBar: {fileID: 7573886303553160242}
-  gameManager: {fileID: 0}
-  inputManager: {fileID: 0}
+  gameManager: {fileID: 1390949381151012543, guid: 1cfe05ebbe08e3c49b25693bbdbf6dc5, type: 3}
+  inputManager: {fileID: 448982473773497888, guid: cef11b36e27adf74fb4368fd2f4e9c2e, type: 3}
   volleyVolume: 0.2
 --- !u!50 &6383720047922127559
 Rigidbody2D:

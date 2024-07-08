@@ -60,3 +60,9 @@ public class EnemyPlacementData : PlacementData
     public Vector2Int enemySize = Vector2Int.one;
 }
 
+[Serializable] 
+public class PowerUpPlacementData: PlacementData  {
+    public GameObject powerUpPrefab;
+    public Vector2Int powerUpSize = Vector2Int.one;
+}
+

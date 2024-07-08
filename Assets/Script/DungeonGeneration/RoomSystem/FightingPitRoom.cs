@@ -9,6 +9,7 @@ public class FightingPitRoom : RoomGenerator
 
     public List<EnemyPlacementData> enemyPlacementData;
     public List<ItemPlacementData> itemData;
+    public List <PowerUpPlacementData> powerUpPlacementData;
 
     public override List<GameObject> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors)
     {
@@ -19,6 +20,7 @@ public class FightingPitRoom : RoomGenerator
             prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper);
 
         placedObjects.AddRange(prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper));
+        placedObjects.AddRange(prefabPlacer.PlacePowerUps(powerUpPlacementData, itemPlacementHelper));
 
         return placedObjects;
     }

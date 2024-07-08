@@ -33,6 +33,30 @@ public class PrefabPlacer : MonoBehaviour
         }
         return placedObjects;
     }
+
+    public List<GameObject> PlacePowerUps(List<PowerUpPlacementData> powerUpPlacementData, ItemPlacementHelper itemPlacementHelper)
+    {
+        List<GameObject> placedObjects = new List<GameObject>();
+
+        foreach (var placementData in powerUpPlacementData)
+        {
+            for (int i = 0; i < placementData.Quantity; i++)
+            {
+                Vector2? possiblePlacementSpot = itemPlacementHelper.GetItemPlacementPosition(
+                    PlacementType.OpenSpace,
+                    100,
+                    placementData.powerUpSize,
+                    false
+                    );
+                if (possiblePlacementSpot.HasValue)
+                {
+
+                    placedObjects.Add(CreateObject(placementData.powerUpPrefab, possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f)));
+                }
+            }
+        }
+        return placedObjects;
+    }
     public List<GameObject> PlaceAllItems(List<ItemPlacementData> itemPlacementData, ItemPlacementHelper itemPlacementHelper)
     {
         List<GameObject> placedObjects = new List<GameObject>();
