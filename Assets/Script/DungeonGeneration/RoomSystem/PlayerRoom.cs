@@ -28,7 +28,7 @@ public class PlayerRoom : RoomGenerator
         Vector2Int playerSpawnPoint = roomCenter;
 
         GameObject playerObject
-            = prefabPlacer.CreateObject(Player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
+            = prefabPlacer.PlacePlayer(Player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
 
         placedObjects.Add(playerObject);
 

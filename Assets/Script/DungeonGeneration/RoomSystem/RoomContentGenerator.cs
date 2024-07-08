@@ -44,6 +44,7 @@ public class RoomContentGenerator : MonoBehaviour
 
         foreach (GameObject item in spawnedObjects)
         {
+            if(!item.scene.IsValid()) continue;
             if (item != null)
                 item.transform.SetParent(itemParent, false);
         }

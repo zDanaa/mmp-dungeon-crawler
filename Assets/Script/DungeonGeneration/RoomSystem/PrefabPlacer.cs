@@ -109,4 +109,25 @@ public class PrefabPlacer : MonoBehaviour
         }
         return newItem;
     }
+
+    public GameObject PlacePlayer(GameObject player, Vector2 placementPoint)
+    {
+        if (player == null)
+        {
+            return null;
+        }
+        if (Application.isPlaying)
+        {
+            player.transform.position = placementPoint;
+            player.transform.rotation = Quaternion.identity;
+        }
+        else
+        {
+            GameObject newItem = PrefabUtility.InstantiatePrefab(player) as GameObject;
+            newItem.transform.position = placementPoint;
+            newItem.transform.rotation = Quaternion.identity;
+            return newItem;
+        }
+        return player;
+    }
 }
