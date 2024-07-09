@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
+        AudioManager.Instance.PlayMusic("GameMusic");
         Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
     }
