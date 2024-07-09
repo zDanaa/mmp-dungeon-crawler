@@ -30,9 +30,6 @@ public class PlayerController : MonoBehaviour
 
     //Audio
     [SerializeField]
-    private float volleyVolume = 0.2f;
-    private float oldVolume;
-    private AudioSource audioSourceBullet;
 
     void Start()
     {
@@ -41,8 +38,6 @@ public class PlayerController : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         float horizontal = 0, vertical = 0;
@@ -121,10 +116,9 @@ public class PlayerController : MonoBehaviour
             (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y),
             0
         ).normalized * bulletSpeed;
-
+        AudioManager.Instance.PlaySfx("VolleySound");
 
     }
-
 
     public void TakeDamage(float damage)
     {
@@ -143,6 +137,7 @@ public class PlayerController : MonoBehaviour
         currentHealth += amount;
         if (currentHealth > maxHealth) { currentHealth = maxHealth; }
         healthBar.SetHealth(currentHealth);
+        AudioManager.Instance.PlaySfx("HealthSound");
     }
     public void IncreaseFireRate()
     {
@@ -152,6 +147,7 @@ public class PlayerController : MonoBehaviour
         }
         fireDelay -= decreaseFireDelay;
         fireRateCoroutine = StartCoroutine(ResetFireRateAfterDelay(5));
+        AudioManager.Instance.PlaySfx("FirerateSound");
     }
 
     private IEnumerator ResetFireRateAfterDelay(float delayTime)
@@ -164,9 +160,7 @@ public class PlayerController : MonoBehaviour
     {
         volleyActive = true;
         int iterations = 6;
-        audioSourceBullet = bulletPrefab.GetComponent<AudioSource>();
-        oldVolume = audioSourceBullet.volume;
-        audioSourceBullet.volume = volleyVolume;
+        AudioManager.Instance.PlaySfx("VolleySound");
         StartCoroutine(BulletVolley(iterations));
     }
 
@@ -185,7 +179,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireDelay);
         }
         volleyActive = false;
-        audioSourceBullet.volume = oldVolume;
+        AudioManager.Instance.PlaySfx("VolleySound");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

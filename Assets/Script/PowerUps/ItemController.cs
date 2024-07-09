@@ -7,39 +7,30 @@ public class ItemController : MonoBehaviour
 {
     public string ID;
 
+    private SpriteRenderer sr;
 
-    //For sound
-     private AudioSource myAudioSource;
-     private SpriteRenderer sr;
-    
     // Start is called before the first frame update
-    void Start(){
-        myAudioSource = GetComponent<AudioSource>();
+    void Start()
+    {
+
         sr = GetComponent<SpriteRenderer>();
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnTriggerEnter2D (Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player"){
+        if (collision.tag == "Player")
+        {
             PlayerController.collectedAmount++;
-            sr.enabled= false;
-            myAudioSource.Play();
-            StartCoroutine(DestroyAfterSound());
+            sr.enabled = false;
+            Destroy(gameObject);
         }
-    }
-
-     private IEnumerator DestroyAfterSound()
-    {
-        // Waite untill sound is played
-       yield return new WaitForSeconds(myAudioSource.clip.length);
-       Destroy(gameObject);
     }
 
     public void Death()

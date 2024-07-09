@@ -10,13 +10,12 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField]
     private float force;
     public float lifeTime;
-    private AudioSource e_bulletSound;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-        e_bulletSound = GetComponent<AudioSource>();
 
         if (player != null)
         {
@@ -27,16 +26,10 @@ public class EnemyBullet : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, rotate + 90);
         }
         StartCoroutine(DeathDelay());
-        e_bulletSound.Play();
+        AudioManager.Instance.PlaySfx("VolleySound");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
-     IEnumerator DeathDelay()
+    IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
