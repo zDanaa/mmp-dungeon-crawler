@@ -7,9 +7,12 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private GameObject[] spawnableObjects;
     [SerializeField] private float spawnRate;
     [SerializeField] private bool canSpawn = true;
+    public PlayerController player;
+    [SerializeField] private float spawnRadius;
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         StartCoroutine(Spawn());
     }
 
@@ -20,7 +23,8 @@ public class SpawnerScript : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
             int random = Random.Range(0, spawnableObjects.Length);
             GameObject spawningEnemies = spawnableObjects[random];
-            Instantiate(spawningEnemies, transform.position, Quaternion.identity);
+            Vector3 spawnPosition = player.transform.position + Random.insideUnitSphere * spawnRadius;
+            Instantiate(spawningEnemies, spawnPosition, Quaternion.identity);
         }
     }
     public void StopSpawning()
