@@ -8,7 +8,11 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private float spawnRate;
     [SerializeField] private bool canSpawn = true;
     public PlayerController player;
-    [SerializeField] private float spawnRadius;
+    //[SerializeField] private float spawnRadius;
+    [SerializeField] private float minSpawnDistance;
+    [SerializeField] private float maxSpawnDistance;
+
+    public LayerMask obstacleLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +27,8 @@ public class SpawnerScript : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
             int random = Random.Range(0, spawnableObjects.Length);
             GameObject spawningEnemies = spawnableObjects[random];
-            Vector3 spawnPosition = player.transform.position + Random.insideUnitSphere * spawnRadius;
+            float spawnDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
+            Vector3 spawnPosition = player.transform.position + Random.insideUnitSphere.normalized * spawnDistance;
             Instantiate(spawningEnemies, spawnPosition, Quaternion.identity);
         }
     }

@@ -26556,13 +26556,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlashingEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4118909665995773373, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2998038489356791927, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4118909665995773373, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118909665995773373, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819446831148221950, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27217,7 +27221,11 @@ MonoBehaviour:
   spawnRate: 3
   canSpawn: 1
   player: {fileID: 0}
-  spawnRadius: 5
+  minSpawnDistance: 1.5
+  maxSpawnDistance: 5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1084441526
 Transform:
   m_ObjectHideFlags: 0
@@ -30780,15 +30788,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175507597925705480, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8175507597925705480, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8341293997310063816, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_Name
       value: ShootingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341293997310063816, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8687796238277925195, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
       propertyPath: m_LocalScale.x
