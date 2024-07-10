@@ -46,3 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BossBullet
+    uniqueID: 4150229425
+    locked: 0
+  - name: Boss
+    uniqueID: 1776705483
+    locked: 0

@@ -2,18 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
 
 public class GameManager : MonoBehaviour
 {
     public float gameTime;
     public int miniBossSpawnTime;
     public Text timerText;
-
     public GameObject gameOverUI;
     public GameObject endGameUI;
+    public GameObject boss;
+    private PlayerController player;
+    private AlhoonBossController bossInstance;
+
 
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         StartCoroutine(GameTimer());
     }
 
@@ -37,12 +42,17 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
-        PlayerWins();
+
+        if (bossInstance.currentHealth <= 0)
+        {
+            PlayerWins();
+        }
     }
 
     public void SpawnMiniBoss()
     {
-        print("Spawning mini boss");
+        Instantiate(boss, player.transform.position, Quaternion.identity);
+        bossInstance = FindObjectOfType<AlhoonBossController>();
     }
 
 
