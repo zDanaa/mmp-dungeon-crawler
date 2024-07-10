@@ -23187,6 +23187,7 @@ MonoBehaviour:
   timerText: {fileID: 1037877449}
   gameOverUI: {fileID: 0}
   endGameUI: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!4 &443432879
 Transform:
   m_ObjectHideFlags: 0
@@ -27822,11 +27823,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de23400b8d6751f479aa28c49303faab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 120
+  gameTime: 90
   miniBossSpawnTime: 60
   timerText: {fileID: 1037877449}
   gameOverUI: {fileID: 1197849655}
   endGameUI: {fileID: 532589251}
+  boss: {fileID: 8341293997310063816, guid: da07c663bc2325d44bbfde589e8098b0, type: 3}
 --- !u!1 &1144873939
 GameObject:
   m_ObjectHideFlags: 0
