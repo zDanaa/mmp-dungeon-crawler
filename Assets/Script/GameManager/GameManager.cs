@@ -21,6 +21,13 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         StartCoroutine(GameTimer());
     }
+    private void Update()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerController>();
+        }
+    }
 
     IEnumerator GameTimer()
     {

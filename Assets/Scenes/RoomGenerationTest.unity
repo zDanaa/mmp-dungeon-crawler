@@ -24183,7 +24183,7 @@ MonoBehaviour:
   timerText: {fileID: 1037877449}
   gameOverUI: {fileID: 1197849655}
   endGameUI: {fileID: 532589251}
-  boss: {fileID: 0}
+  boss: {fileID: 8341293997310063816, guid: da07c663bc2325d44bbfde589e8098b0, type: 3}
 --- !u!4 &1126934174
 Transform:
   m_ObjectHideFlags: 0
@@ -37438,6 +37438,10 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 1197849655}
+    - target: {fileID: 1390949381151012543, guid: 1cfe05ebbe08e3c49b25693bbdbf6dc5, type: 3}
+      propertyPath: miniBossSpawnTime
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 6779015857676230658, guid: 1cfe05ebbe08e3c49b25693bbdbf6dc5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
