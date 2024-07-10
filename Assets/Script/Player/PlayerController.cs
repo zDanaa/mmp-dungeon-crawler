@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour
         playerBody = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-
+        gameManager = FindFirstObjectByType<GameManager>();
+        inputManager = FindFirstObjectByType<InputManager>();
+        collectedText = FindFirstObjectByType<TextMeshProUGUI>();
     }
     void Update()
     {
