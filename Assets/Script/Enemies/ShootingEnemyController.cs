@@ -10,7 +10,6 @@ public class ShootingEnemyController : EnemyController
     public float dangerZone;
     public float safeZone;
     public GameObject bullet;
-    public Transform bulletPos;
 
     void Start()
     {
