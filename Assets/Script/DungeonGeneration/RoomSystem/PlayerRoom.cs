@@ -9,7 +9,7 @@ public class PlayerRoom : RoomGenerator
     public GameObject player;
 
     public List<ItemPlacementData> itemData;
-
+    public List<RockPlacementData> rockPlacementData;
     [SerializeField]
     private PrefabPlacer prefabPlacer;
 
@@ -32,8 +32,8 @@ public class PlayerRoom : RoomGenerator
         
         GameObject playerObject
             = prefabPlacer.CreateObject(player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
-
         placedObjects.Add(playerObject);
+        placedObjects.AddRange(prefabPlacer.PlaceRocks(rockPlacementData, itemPlacementHelper));
 
         return placedObjects;
     }
@@ -61,6 +61,12 @@ public class EnemyPlacementData : PlacementData
 {
     public GameObject enemyPrefab;
     public Vector2Int enemySize = Vector2Int.one;
+}
+[Serializable]
+public class RockPlacementData : PlacementData
+{
+    public GameObject rockPrefab;
+    public Vector2Int rockSize = Vector2Int.one;
 }
 
 [Serializable] 

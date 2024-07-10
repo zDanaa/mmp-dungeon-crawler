@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     [SerializeField]
     int health = 3;
     [SerializeField]
-    bool nonDestructible;
+    //bool nonDestructible;
     public void Initialize(ItemData itemData)
     {
         //set sprite
@@ -24,8 +24,8 @@ public class Item : MonoBehaviour
         itemCollider.size = itemData.size;
         itemCollider.offset = spriteRenderer.transform.localPosition;
 
-        if (itemData.nonDestructible)
-            nonDestructible = true;
+        /*if (itemData.nonDestructible)
+            nonDestructible = true;*/
 
         this.health = itemData.health;
 

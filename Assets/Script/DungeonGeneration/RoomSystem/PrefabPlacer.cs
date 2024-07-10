@@ -32,6 +32,28 @@ public class PrefabPlacer : MonoBehaviour
             }
         }
         return placedObjects;
+    }    public List <GameObject> PlaceRocks(List <RockPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper)
+    {
+        List<GameObject> placedObjects = new List<GameObject>();
+
+        foreach (var placementData in enemyPlacementData)
+        {
+            for (int i = 0; i < placementData.Quantity; i++)
+            {
+                Vector2? possiblePlacementSpot = itemPlacementHelper.GetItemPlacementPosition(
+                    PlacementType.OpenSpace,
+                    100,
+                    placementData.rockSize,
+                    false
+                    );
+                if (possiblePlacementSpot.HasValue )
+                {
+
+                    placedObjects.Add(CreateObject(placementData.rockPrefab, possiblePlacementSpot.Value + new Vector2 (0.5f, 0.5f)));
+                }
+            }
+        }
+        return placedObjects;
     }
 
     public List<GameObject> PlacePowerUps(List<PowerUpPlacementData> powerUpPlacementData, ItemPlacementHelper itemPlacementHelper)
