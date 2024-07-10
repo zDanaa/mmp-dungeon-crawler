@@ -51,30 +51,6 @@ To run the Unity Dungeon Crawler locally, follow these steps:
 
 Once the game is running, use the `W`, `A`, `S`, `D` keys to move your character and the arrow keys to shoot in different directions. Explore the dungeon, defeat enemies, and collect loot to progress.
 
-## Contributing
-
-We welcome contributions to the Unity Dungeon Crawler project! To contribute, please follow these steps:
-
-1. **Fork the repository**.
-2. **Create a new branch** for your feature or bugfix:
-    ```bash
-    git checkout -b feature/your-feature-name
-    ```
-3. **Commit your changes**:
-    ```bash
-    git commit -m "Add your feature"
-    ```
-4. **Push to the branch**:
-    ```bash
-    git push origin feature/your-feature-name
-    ```
-5. **Open a pull request** to the `main` branch.
-
-Please ensure your code adheres to the project's coding standards and includes relevant documentation and tests.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributors
 
