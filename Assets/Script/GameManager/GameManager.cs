@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
+        AudioManager.Instance.StopMusic("GameMusic");
         Time.timeScale = 1f;
         SceneManager.LoadScene("StartMenu");
     }

@@ -32,13 +32,17 @@ public class AudioManager : MonoBehaviour
     }
 
     //Boss Music
-    private void Update(){
+    private void Update()
+    {
         //Debug.Log("Update called. BossMusicOn: " + bossMusicOn + ", IsBossActive: " + IsBossActive());
-        if(!bossMusicOn && IsBossActive()){
+        if (!bossMusicOn && IsBossActive())
+        {
             //Debug.Log("Boss is active. Switching to Boss Music.");
             PlayMusic("BossAMusic");
-            bossMusicOn  = true;
-        }else if ( bossMusicOn && !IsBossActive()){
+            bossMusicOn = true;
+        }
+        else if (bossMusicOn && !IsBossActive())
+        {
             //Debug.Log("Boss is not active. Switching to Game Music.");
             PlayMusic("GameMusic");
             bossMusicOn = false;
@@ -61,6 +65,23 @@ public class AudioManager : MonoBehaviour
             //Debug.Log("Playing Music: " + name);
         }
     }
+
+    public void StopMusic(string name)
+    {
+        Sound s = Array.Find(musicSounds, x => x.musicName == name);
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+        else
+        {
+            musicSource.clip = s.clip;
+            musicSource.loop = true;
+            musicSource.Pause();
+        }
+    }
+
+
     public void PlaySfx(string name)
     {
         Sound s = Array.Find(sfxSounds, x => x.musicName == name);
@@ -92,7 +113,8 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    private bool IsBossActive(){
+    private bool IsBossActive()
+    {
         GameObject boss = GameObject.FindGameObjectWithTag("BossA");
         if (boss != null)
         {
