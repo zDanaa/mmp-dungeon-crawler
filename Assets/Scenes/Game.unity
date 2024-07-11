@@ -27993,12 +27993,12 @@ MonoBehaviour:
   spawnableObjects:
   - {fileID: 8341293997310063816, guid: df0f978a4951247449ea26e3033c9c32, type: 3}
   - {fileID: 2998038489356791927, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
-  spawnRate: 3
+  spawnRate: 4
   canSpawn: 1
   player: {fileID: 0}
   minSpawnDistance: 1.5
   maxSpawnDistance: 5
-  decreaseSpawnRateFactor: 0.99
+  decreaseSpawnRateFactor: 0.97
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
