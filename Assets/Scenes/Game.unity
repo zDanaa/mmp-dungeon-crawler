@@ -25086,6 +25086,7 @@ GameObject:
   - component: {fileID: 658404677}
   - component: {fileID: 658404676}
   - component: {fileID: 658404675}
+  - component: {fileID: 658404678}
   m_Layer: 5
   m_Name: SfxButton
   m_TagString: Untagged
@@ -25168,6 +25169,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 658404678}
+        m_TargetAssemblyTypeName: ImageChange, Assembly-CSharp
+        m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &658404676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25188,7 +25201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1736767968, guid: 8ca14c242ed613041a9303c34cbad376, type: 3}
+  m_Sprite: {fileID: 1788259875, guid: 8ca14c242ed613041a9303c34cbad376, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25206,6 +25219,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658404673}
   m_CullTransparentMesh: 1
+--- !u!114 &658404678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658404673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03335548469671c469d81e5d2a2350aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundOn: {fileID: 1788259875, guid: 8ca14c242ed613041a9303c34cbad376, type: 3}
+  soundOff: {fileID: -970597107, guid: 8ca14c242ed613041a9303c34cbad376, type: 3}
+  button: {fileID: 658404675}
 --- !u!1 &672067895
 GameObject:
   m_ObjectHideFlags: 0
@@ -45106,6 +45134,7 @@ GameObject:
   - component: {fileID: 2113834343}
   - component: {fileID: 2113834342}
   - component: {fileID: 2113834341}
+  - component: {fileID: 2113834344}
   m_Layer: 5
   m_Name: MusicButton
   m_TagString: Untagged
@@ -45188,6 +45217,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2113834344}
+        m_TargetAssemblyTypeName: ImageChange, Assembly-CSharp
+        m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2113834342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45226,6 +45267,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113834339}
   m_CullTransparentMesh: 1
+--- !u!114 &2113834344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113834339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03335548469671c469d81e5d2a2350aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundOn: {fileID: -1736767968, guid: 8ca14c242ed613041a9303c34cbad376, type: 3}
+  soundOff: {fileID: -729348108, guid: 8ca14c242ed613041a9303c34cbad376, type: 3}
+  button: {fileID: 2113834341}
 --- !u!1 &2121539410
 GameObject:
   m_ObjectHideFlags: 0
