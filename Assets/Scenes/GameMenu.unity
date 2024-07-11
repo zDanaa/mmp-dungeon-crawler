@@ -22863,7 +22863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89603094617dc294aa3f7a64e2de6d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 1657826573}
 --- !u!114 &838855455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24826,9 +24826,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTime: 120
   miniBossSpawnTime: 60
-  timerText: {fileID: 0}
-  gameOverUI: {fileID: 0}
-  endGameUI: {fileID: 0}
+  timerText: {fileID: 1456383167}
+  gameOverUI: {fileID: 1744918177}
+  endGameUI: {fileID: 627009055}
   boss: {fileID: 8341293997310063816, guid: da07c663bc2325d44bbfde589e8098b0, type: 3}
 --- !u!4 &1126934174
 Transform:
@@ -39953,7 +39953,7 @@ PrefabInstance:
     - target: {fileID: 1390949381151012543, guid: 1cfe05ebbe08e3c49b25693bbdbf6dc5, type: 3}
       propertyPath: endGameUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 627009055}
     - target: {fileID: 1390949381151012543, guid: 1cfe05ebbe08e3c49b25693bbdbf6dc5, type: 3}
       propertyPath: timerText
       value: 
@@ -39961,7 +39961,7 @@ PrefabInstance:
     - target: {fileID: 1390949381151012543, guid: 1cfe05ebbe08e3c49b25693bbdbf6dc5, type: 3}
       propertyPath: gameOverUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1744918177}
     - target: {fileID: 1390949381151012543, guid: 1cfe05ebbe08e3c49b25693bbdbf6dc5, type: 3}
       propertyPath: miniBossSpawnTime
       value: 60
