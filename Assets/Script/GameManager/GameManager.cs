@@ -79,13 +79,13 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance.PlayMusic("GameMusic");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("GameMenu");
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void QuitGame()
