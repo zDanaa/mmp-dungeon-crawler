@@ -11,12 +11,14 @@ public class SpawnerScript : MonoBehaviour
     //[SerializeField] private float spawnRadius;
     [SerializeField] private float minSpawnDistance;
     [SerializeField] private float maxSpawnDistance;
-
+     private float currentSpawnRate;
+     [SerializeField] private float decreaseSpawnRateFactor;
     public LayerMask obstacleLayer;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        currentSpawnRate = spawnRate;
         StartCoroutine(Spawn());
     }
 
@@ -24,13 +26,20 @@ public class SpawnerScript : MonoBehaviour
     {
         while (canSpawn)
         {
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(currentSpawnRate);
             int random = Random.Range(0, spawnableObjects.Length);
             GameObject spawningEnemies = spawnableObjects[random];
             float spawnDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
             Vector3 spawnPosition = player.transform.position + Random.insideUnitSphere.normalized * spawnDistance;
+
+            
             Instantiate(spawningEnemies, spawnPosition, Quaternion.identity);
-        }
+            currentSpawnRate = currentSpawnRate * decreaseSpawnRateFactor;
+            Debug.Log("Rate: " + currentSpawnRate);
+        
+        }  
+            
+        
     }
     public void StopSpawning()
 {

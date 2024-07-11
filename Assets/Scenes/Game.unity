@@ -27998,6 +27998,7 @@ MonoBehaviour:
   player: {fileID: 0}
   minSpawnDistance: 1.5
   maxSpawnDistance: 5
+  decreaseSpawnRateFactor: 0.99
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -44789,14 +44790,14 @@ CompositeCollider2D:
       - {x: 6.9999704, y: 38}
       - {x: 6, y: 37.999973}
       - {x: 6.000029, y: 37}
-    - - {x: 26.999971, y: 29}
-      - {x: 26.999971, y: 30}
-      - {x: 25, y: 29.999971}
-      - {x: 25.000029, y: 29}
     - - {x: 11.99997, y: 29}
       - {x: 11.99997, y: 30}
       - {x: 10, y: 29.999971}
       - {x: 10.00003, y: 29}
+    - - {x: 26.999971, y: 29}
+      - {x: 26.999971, y: 30}
+      - {x: 25, y: 29.999971}
+      - {x: 25.000029, y: 29}
     - - {x: 8.99997, y: 27}
       - {x: 9.00003, y: 28}
       - {x: 10, y: 28.000029}
