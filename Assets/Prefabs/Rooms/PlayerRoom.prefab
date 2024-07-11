@@ -47,8 +47,8 @@ MonoBehaviour:
   player: {fileID: 918312820349807309, guid: d96e612b32be8484495d7b3c00d34c6c, type: 3}
   itemData: []
   rockPlacementData:
-  - minQuantity: 2
-    maxQuantity: 4
+  - minQuantity: 8
+    maxQuantity: 12
     rockPrefab: {fileID: 6555841943961922514, guid: a331ff722544f89419de9c0168c16aca, type: 3}
     rockSize: {x: 1, y: 1}
   prefabPlacer: {fileID: -4851847096729927978, guid: 8835ff9925644d44ebf39e387e2d66fa, type: 3}
