@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 5036359432940507541}
   m_Layer: 6
   m_Name: AlhoonBoss
-  m_TagString: Untagged
+  m_TagString: BossA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -25757,6 +25757,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ffd34c8ebfc746e47b8c1915ab066d89, type: 3}
   - musicName: GameMusic
     clip: {fileID: 8300000, guid: 523291a41886c2c4d9b46d152041f286, type: 3}
+  - musicName: BossAMusic
+    clip: {fileID: 8300000, guid: c54ad93646b97ad45ab8990e881ec891, type: 3}
   sfxSounds:
   - musicName: FirerateSound
     clip: {fileID: 8300000, guid: 96390ea267da4bc44b6f1f901c18e354, type: 3}
@@ -25766,6 +25768,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 29d05d1f37eb3e1499991d84d71662d6, type: 3}
   musicSource: {fileID: 1692428040}
   sfxSource: {fileID: 1485950684}
+  bossMonster: {fileID: 8341293997310063816, guid: da07c663bc2325d44bbfde589e8098b0, type: 3}
 --- !u!4 &1256057991
 Transform:
   m_ObjectHideFlags: 0
