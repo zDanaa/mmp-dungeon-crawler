@@ -27,7 +27,6 @@ public class ItemController : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            PlayerController.collectedAmount++;
             sr.enabled = false;
             Destroy(gameObject);
         }

@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
     Rigidbody2D playerBody;
-    public TextMeshProUGUI collectedText;
-    public static int collectedAmount = 0;
     public GameObject bulletPrefab;
     public float bulletSpeed;
     private float lastFire;
@@ -38,7 +36,6 @@ public class PlayerController : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         gameManager = FindFirstObjectByType<GameManager>();
         inputManager = FindFirstObjectByType<InputManager>();
-        collectedText = FindFirstObjectByType<TextMeshProUGUI>();
     }
     void Update()
     {
@@ -62,7 +59,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
         playerBody.velocity = movement * playerSpeed;
-        collectedText.text = "Item Collected:" + collectedAmount;
 
         if (horizontal > 0)
         {
