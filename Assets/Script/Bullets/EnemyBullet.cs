@@ -26,7 +26,7 @@ public class EnemyBullet : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, rotate + 90);
         }
         StartCoroutine(DeathDelay());
-        AudioManager.Instance.PlaySfx("VolleySound");
+        AudioManager.Instance.PlaySfx("EnemyBullet");
     }
 
     IEnumerator DeathDelay()

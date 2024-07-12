@@ -487,7 +487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -43}
+  m_AnchoredPosition: {x: 138, y: -41}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &76145671
@@ -23152,10 +23152,10 @@ MonoBehaviour:
     2. Slay the boss monster, which
     is the power source of the dimension!
 
-    
 
-    We wish you the best of luck
-    in your escape!
+
+    We wish you the best of luck in
+    your escape!
 
 '
   m_isRightToLeft: 0
@@ -27529,6 +27529,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8f8b35a6be7bddf40a9841fe4ccf0cec, type: 3}
   - musicName: VolleySound
     clip: {fileID: 8300000, guid: 29d05d1f37eb3e1499991d84d71662d6, type: 3}
+  - musicName: EnemyBullet
+    clip: {fileID: 8300000, guid: 6f0ebe0fdf662cd449e1a1cba9ed48d0, type: 3}
   musicSource: {fileID: 1692428040}
   sfxSource: {fileID: 1485950684}
   bossMonster: {fileID: 8341293997310063816, guid: da07c663bc2325d44bbfde589e8098b0, type: 3}
@@ -31536,14 +31538,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You know about the following items:
 
-    + Health Item: This item is
-    red and can heal some of your health points.
+    + Health Item: This item is red
+    and can heal some of your health points.
 
-    + Volley Item: This item is
-    purple and can help you shoot multiple bullets at the same time.
+    + Volley Item: This item is purple
+    and can help you shoot multiple bullets at the same time.
 
-    + Fire
-    Rate Item: This item is green and increases your fire rate for a certain time'
+    + Fire Rate Item:
+    This item is green and increases your fire rate for a certain time'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31682,10 +31684,10 @@ MonoBehaviour:
     2. Slay the boss monster, which
     is the power source of the dimension!
 
-    
 
-    We wish you the best of luck
-    in your escape!
+
+    We wish you the best of luck in
+    your escape!
 
 '
   m_isRightToLeft: 0
@@ -32420,7 +32422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 57}
+  m_AnchoredPosition: {x: 138, y: 59}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1854432460
@@ -32631,7 +32633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -143}
+  m_AnchoredPosition: {x: 138, y: -141}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1893129610
@@ -32951,14 +32953,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You know about the following items:
 
-    + Health Item: This item is
-    red and can heal some of your health points.
+    + Health Item: This item is red
+    and can heal some of your health points.
 
-    + Volley Item: This item is
-    purple and can help you shoot multiple bullets at the same time.
+    + Volley Item: This item is purple
+    and can help you shoot multiple bullets at the same time.
 
-    + Fire
-    Rate Item: This item is green and increases your fire rate for a certain time'
+    + Fire Rate Item:
+    This item is green and increases your fire rate for a certain time'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
