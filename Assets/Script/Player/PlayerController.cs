@@ -151,7 +151,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ResetFireRateAfterDelay(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        print("Fire rate reset. New fireDelay: " + fireDelay);
         fireDelay += decreaseFireDelay;
     }
 
