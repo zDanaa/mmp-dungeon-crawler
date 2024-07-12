@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             musicSource.clip = s.clip;
-            musicSource.loop = true;  // Setze den Clip auf Loop
+            musicSource.loop = true;  
             musicSource.Play();
             //Debug.Log("Playing Music: " + name);
         }
@@ -112,6 +112,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.volume = volume;
     }
 
+    public float GetSFXVolume(){
+       
+        return sfxSource.volume;
+    }
+
 
     private bool IsBossActive()
     {
@@ -123,7 +128,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Boss Monster Not Found");
+            //Debug.Log("Boss Monster Not Found");
             return false;
         }
     }
