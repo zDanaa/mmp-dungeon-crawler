@@ -1900,7 +1900,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: riules
+  m_text: 'rules
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f2dcf029949142e28b974630369c8b4e, type: 2}
@@ -4035,14 +4037,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You know about the following items:
 
-    + Health Item: This item is
-    red and can heal some of your health points.
+    + Health Item: This item is red
+    and can heal some of your health points.
 
-    + Volley Item: This item is
-    purple and can help you shoot multiple bullets at the same time.
+    + Volley Item: This item is purple
+    and can help you shoot multiple bullets at the same time.
 
-    + Fire
-    Rate Item: This item is green and increases your fire rate for a certain time'
+    + Fire Rate Item:
+    This item is green and increases your fire rate for a certain time'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4891,10 +4893,10 @@ MonoBehaviour:
     2. Slay the boss monster, which
     is the power source of the dimension!
 
-    
 
-    We wish you the best of luck
-    in your escape!
+
+    We wish you the best of luck in
+    your escape!
 
 '
   m_isRightToLeft: 0
