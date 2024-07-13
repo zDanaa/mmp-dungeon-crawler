@@ -19,8 +19,9 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     public static float currentHealth;
     public HealthBarScript healthBar;
-    // Start is called before the first frame update
+    
     //Von Lilli
+    private float old_volume;
     [SerializeField]
     public GameManager gameManager;
     private bool isDead;
@@ -158,8 +159,15 @@ public class PlayerController : MonoBehaviour
     {
         volleyActive = true;
         int iterations = 6;
+        old_volume =AudioManager.Instance.GetSFXVolume();
+        Debug.Log("SFX Volume: "+ AudioManager.Instance.GetSFXVolume() );
+        if (old_volume>0.4f){
+            AudioManager.Instance.SfxVolume(0.4f);
+        Debug.Log("NEWWWW SFX Volume: "+ AudioManager.Instance.GetSFXVolume() );
+        }
         AudioManager.Instance.PlaySfx("VolleySound");
         StartCoroutine(BulletVolley(iterations));
+        
     }
 
     private IEnumerator BulletVolley(int iterations)
@@ -177,7 +185,9 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireDelay);
         }
         volleyActive = false;
-        AudioManager.Instance.PlaySfx("VolleySound");
+        //AudioManager.Instance.PlaySfx("VolleySound");
+        AudioManager.Instance.SfxVolume(old_volume);
+        Debug.Log("SFX Volume After: "+ AudioManager.Instance.GetSFXVolume() );
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
