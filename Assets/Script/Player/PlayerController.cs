@@ -140,10 +140,6 @@ public class PlayerController : MonoBehaviour
     }
     public void IncreaseFireRate()
     {
-        if (fireRateCoroutine != null)
-        {
-            StopCoroutine(fireRateCoroutine);
-        }
         fireDelay -= decreaseFireDelay;
         fireRateCoroutine = StartCoroutine(ResetFireRateAfterDelay(5));
         AudioManager.Instance.PlaySfx("FirerateSound");

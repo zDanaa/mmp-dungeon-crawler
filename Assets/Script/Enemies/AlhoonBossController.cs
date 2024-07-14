@@ -7,8 +7,6 @@ public class AlhoonBossController : EnemyController
 {
 
     [SerializeField]
-    public float dangerZone;
-    public float safeZone;
     public GameObject bullet;
     public float bulletSpeed;
     public float bulletHellCooldown;
