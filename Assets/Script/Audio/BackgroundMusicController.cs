@@ -28,4 +28,9 @@ public class BackgroundMusic : MonoBehaviour
     {
         new_audio.volume = slider.value;
     }
+
+    public void ToggleMusic()
+    {
+        new_audio.mute = !new_audio.mute;
+    }
 }
