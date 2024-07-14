@@ -28925,6 +28925,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 29d05d1f37eb3e1499991d84d71662d6, type: 3}
   musicSource: {fileID: 535393020}
   sfxSource: {fileID: 1058330715}
+  bossMonster: {fileID: 0}
 --- !u!4 &1323358322
 Transform:
   m_ObjectHideFlags: 0
@@ -30107,7 +30108,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.2924528, g: 0.2524475, b: 0.2684246, a: 0}
+  m_BackGroundColor: {r: 0.14509805, g: 0.07450981, b: 0.101960786, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -31712,6 +31713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 367036505}
   optionScreen: {fileID: 1144873939}
+  rebindScreen: {fileID: 0}
 --- !u!114 &1855897325
 MonoBehaviour:
   m_ObjectHideFlags: 0
