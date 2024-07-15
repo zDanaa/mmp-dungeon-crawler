@@ -20,6 +20,10 @@ public class RoomContentGenerator : MonoBehaviour
 
     public UnityEvent RegenerateDungeon;
 
+    public GameObject spawnerPrefab;
+    public SpawnerScript spawner;
+    private PlayerController player;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -41,6 +45,34 @@ public class RoomContentGenerator : MonoBehaviour
 
         SelectPlayerSpawnPoint(dungeonData);
         SelectEnemySpawnPoints(dungeonData);
+
+       
+        GameObject spawnerInstance = Instantiate(spawnerPrefab, Vector3.zero, Quaternion.identity);
+        SpawnerScript spawnerScript = spawnerInstance.GetComponent<SpawnerScript>();
+           
+        HashSet<Vector2Int> roomFloor = new HashSet<Vector2Int>();
+        HashSet<Vector2Int> roomFloorWithoutCorridors = new HashSet<Vector2Int>();
+        foreach (var room in dungeonData.roomsDictionary.Values)
+        {
+            roomFloor.UnionWith(room);
+        }
+
+        foreach (var roomKey in dungeonData.roomsDictionary.Keys)
+        {
+            roomFloorWithoutCorridors.UnionWith(dungeonData.GetRoomFloorWithoutCorridors(roomKey));
+        }
+
+        ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorWithoutCorridors);
+
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerController>();
+        }
+
+        spawnerScript.Initialize(itemPlacementHelper, player);
+        spawnerScript.StartSpawning();
+
+        spawnedObjects.Add(spawnerInstance);
 
         foreach (GameObject item in spawnedObjects)
         {
@@ -85,6 +117,17 @@ public class RoomContentGenerator : MonoBehaviour
             );
 
         }
+    }
+    public HashSet<Vector2Int> GetRoomAtPosition(Vector2Int position, DungeonData dungeonData)
+    {
+        foreach (var room in dungeonData.roomsDictionary)
+        {
+            if (room.Value.Contains(position))
+            {
+                return room.Value;
+            }
+        }
+        return null;
     }
 
 }

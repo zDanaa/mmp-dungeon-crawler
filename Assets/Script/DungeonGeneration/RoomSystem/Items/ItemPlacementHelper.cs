@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class ItemPlacementHelper
 {
+    private HashSet<Vector2Int> roomFloor;
     Dictionary<PlacementType, HashSet<Vector2Int>>
         tileByType = new Dictionary<PlacementType, HashSet<Vector2Int>>();
 
@@ -14,8 +15,10 @@ public class ItemPlacementHelper
 
     public ItemPlacementHelper(HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorWithoutCorridor)
     {
+        this.roomFloor = roomFloor;
         Graph graph = new Graph(roomFloor);
         this.roomFloorWithoutCorridor = roomFloorWithoutCorridor;
+        tileByType = new Dictionary<PlacementType, HashSet<Vector2Int>>();
 
         foreach (var point in roomFloorWithoutCorridor)
         {
@@ -97,10 +100,21 @@ public class ItemPlacementHelper
         }
         return (true, points);
     }
+    public bool IsPositionValid(Vector2Int position)
+    {
+        bool isValid = roomFloor.Contains(position);
+        return isValid;
+    }
+
+     public List<Vector2> GetPotentialSpawnPositions() 
+    {
+        List<Vector2> potentialPositions = roomFloorWithoutCorridor.Select(pos => (Vector2)pos).ToList();
+        return potentialPositions;
+    }
+    
 }
     public enum PlacementType
 {
     OpenSpace,
     NearWall
 }
-
