@@ -207,6 +207,8 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 579686612220480166}
   target: {fileID: 0}
+  distanceToPlayer: 0
+  direction: {x: 0, y: 0}
   spriteRenderer: {fileID: 5057538952290214043}
   player: {fileID: 0}
   animator: {fileID: 0}
@@ -214,10 +216,10 @@ MonoBehaviour:
   attackTimer: 0
   attackCooldown: 1
   aggroRange: 10
-  receiveDamage: 20
   damage: 20
-  attackDuration: 0.5
-  meleeRange: 1
+  playerDamage: 0
+  attackDuration: 0.6
+  meleeRange: 1.1
 --- !u!61 &8637443249433402311
 BoxCollider2D:
   m_ObjectHideFlags: 0
