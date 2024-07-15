@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float fireDelay;
     private bool volleyActive = false;
     public float maxHealth;
+    public float healAmount;
     public static float currentHealth;
     public HealthBarScript healthBar;
     public float damage;
@@ -192,7 +193,7 @@ public class PlayerController : MonoBehaviour
             string itemID = collision.GetComponent<ItemController>().ID;
             if (itemID == "health")
             {
-                Heal(50);
+                Heal(healAmount);
             }
             if (itemID == "fireRate")
             {

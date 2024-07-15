@@ -107,6 +107,7 @@ MonoBehaviour:
   decreaseFireDelay: 0.3
   fireDelay: 0.5
   maxHealth: 400
+  healAmount: 80
   healthBar: {fileID: 7573886303553160242}
   damage: 20
   gameManager: {fileID: 0}
