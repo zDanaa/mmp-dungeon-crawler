@@ -44,7 +44,7 @@ public class ShootingEnemyController : EnemyController
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
             }
-            else if (distanceToTarget < safeZone && distanceToTarget > dangerZone)
+            else if (distanceToTarget < safeZone && distanceToTarget > dangerZone + 0.5)
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, (speed / 2) * Time.deltaTime);
             }
