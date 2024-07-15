@@ -7,8 +7,6 @@ public class AlhoonBossController : EnemyController
 {
 
     [SerializeField]
-    public float dangerZone;
-    public float safeZone;
     public GameObject bullet;
     public float bulletSpeed;
     public float bulletHellCooldown;
@@ -20,36 +18,28 @@ public class AlhoonBossController : EnemyController
     public float healAmount;
     private bool isHealing; 
     private bool nextMoveIsBulletHell;
-    void Start()
+    protected override void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        isHealing = false;
-        if (PlayerController.currentHealth > 0)
-        {
-            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        }
-
+        base.Start();
+        nextMoveIsBulletHell = true;
+        initialFlip = 1;
     }
-    void Update()
+    protected override void Update()
     {
-        if (target == null) return;
+        base.Update();
 
-        setSpriteFlip(target.position - transform.position, 1);
-
-        float distanceToTarget = Vector2.Distance(transform.position, target.position);
-        if (distanceToTarget > aggroRange) 
+        if (distanceToPlayer > aggroRange) 
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
         }
-        else {
+        else if (transform != null && target != null){
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
 
             if (!isHealing)
             {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                ChasePlayer(direction);
             }
 
             attackTimer += Time.deltaTime;

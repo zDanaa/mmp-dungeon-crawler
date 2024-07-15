@@ -21,6 +21,7 @@ public class BackgroundMusic : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            new_audio.loop = true;
         }
     }
 

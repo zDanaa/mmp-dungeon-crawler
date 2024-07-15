@@ -9,36 +9,51 @@ public class EnemyController : MonoBehaviour
     public float currentHealth;
     public HealthBarScript healthBar;
     public Transform target;
+    public float distanceToPlayer;
+    public Vector2 direction;
     public SpriteRenderer spriteRenderer;
+    protected int initialFlip;
     public PlayerController player;
     public Animator animator;
     public float speed;
     public float attackTimer;
     public float attackCooldown;
     public float aggroRange;
-    public float receiveDamage;
     public float damage;
+    public float playerDamage;
 
-    void Start()
+    protected virtual void Start()
     {
-
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        if (GameObject.FindGameObjectWithTag("Player") != null){
+            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            player = target.GetComponent<PlayerController>();
+            playerDamage = player.damage;
+        }
+        attackTimer = attackCooldown;
+        animator = GetComponent<Animator>();
     }
-    void Update()
+    protected virtual void Update()
     {
-
+        if (target == null || transform == null) return;
+        
+        distanceToPlayer = Vector2.Distance(transform.position, target.position);
+        direction = (target.position - transform.position).normalized;
+        setSpriteFlip(direction, initialFlip);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bullet")
         {
-            TakeDamage(receiveDamage);
+            TakeDamage(playerDamage);
             Destroy(collision.gameObject);
         }
     }
 
     private void TakeDamage(float damage)
     {
-        currentHealth -= receiveDamage;
+        currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
@@ -57,6 +72,11 @@ public class EnemyController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    public void ChasePlayer(Vector2 direction)
+    {
+        transform.Translate(speed * Time.deltaTime * direction);
     }
 }
 

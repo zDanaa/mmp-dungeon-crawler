@@ -7,46 +7,34 @@ public class SlashingEnemyController : EnemyController
     public float attackDuration;
     public float meleeRange; 
     private bool isAttacking = false;
-    void Start()
+    protected override void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        player = target.GetComponent<PlayerController>();
-        animator = GetComponent<Animator>(); 
+        base.Start();
         attackTimer = attackCooldown;
+        initialFlip = 1;
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (target == null) return;
+        base.Update();
 
         attackTimer += Time.deltaTime;
-        
-        float distance = Vector2.Distance(transform.position, target.position);
-        Vector2 direction = (target.position - transform.position).normalized;
-        setSpriteFlip(direction, 1);
 
-        if (distance > meleeRange && !isAttacking && distance <= aggroRange)
+        if (distanceToPlayer > meleeRange && !isAttacking && distanceToPlayer <= aggroRange)
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
             ChasePlayer(direction);
         }
-        if (attackTimer >= attackCooldown && !isAttacking && distance <= meleeRange)
+        if (attackTimer >= attackCooldown && !isAttacking && distanceToPlayer <= meleeRange)
         {   
             Attack();
         }
-        if (distance > aggroRange)
+        if (distanceToPlayer > aggroRange)
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
         }
-    }
-
-    void ChasePlayer(Vector2 direction)
-    {
-        transform.Translate(speed * Time.deltaTime * direction);
     }
 
     void Attack()

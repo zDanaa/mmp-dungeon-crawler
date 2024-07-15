@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour
     private float lastFire;
     public float decreaseFireDelay;
     public float fireDelay;
-    private Coroutine fireRateCoroutine;
     private bool volleyActive = false;
     public float maxHealth;
     public static float currentHealth;
     public HealthBarScript healthBar;
+    public float damage;
     
     //Von Lilli
     private float old_volume;
@@ -140,12 +140,8 @@ public class PlayerController : MonoBehaviour
     }
     public void IncreaseFireRate()
     {
-        if (fireRateCoroutine != null)
-        {
-            StopCoroutine(fireRateCoroutine);
-        }
         fireDelay -= decreaseFireDelay;
-        fireRateCoroutine = StartCoroutine(ResetFireRateAfterDelay(5));
+        StartCoroutine(ResetFireRateAfterDelay(5));
         AudioManager.Instance.PlaySfx("FirerateSound");
     }
 
@@ -185,7 +181,6 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireDelay);
         }
         volleyActive = false;
-        //AudioManager.Instance.PlaySfx("VolleySound");
         AudioManager.Instance.SfxVolume(old_volume);
         Debug.Log("SFX Volume After: "+ AudioManager.Instance.GetSFXVolume() );
     }
@@ -216,15 +211,8 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject); //Or death animation
-        // Handle player death (e.g., respawn, game over, etc.)
+        Destroy(gameObject); 
         Debug.Log("Player died!");
-        //GameManager.instance.ReloadScene();
     }
 
 }
-
-/*if(other.gameObject.CompareTag("Enemy")){
-            Destroy(other.gameObject);
-            target = null;
-        } */ //Nach dem prinzip könnte man One Hit enemys machen
