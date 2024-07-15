@@ -53,9 +53,8 @@ public class ExplodingEnemyController : EnemyController
         if (explosionAnimator != null)
         {
             AnimatorStateInfo stateInfo = explosionAnimator.GetCurrentAnimatorStateInfo(0);
-            yield return new WaitForSeconds(stateInfo.length);
+            Destroy(explosion, stateInfo.length);
         }
-        Destroy(explosion);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D collider in colliders)
