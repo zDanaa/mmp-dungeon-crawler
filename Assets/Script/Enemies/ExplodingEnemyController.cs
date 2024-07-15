@@ -14,7 +14,8 @@ public class ExplodingEnemyController : EnemyController
         healthBar.SetMaxHealth(maxHealth);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         player = target.GetComponent<PlayerController>();
-        animator = GetComponent<Animator>(); 
+        playerDamage = player.damage;
+        animator = GetComponent<Animator>();
     }
 
     void Update()

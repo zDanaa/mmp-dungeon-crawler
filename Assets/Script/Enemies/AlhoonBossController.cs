@@ -27,7 +27,8 @@ public class AlhoonBossController : EnemyController
         {
             target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
-
+        player = target.GetComponent<PlayerController>();
+        playerDamage = player.damage;
     }
     void Update()
     {

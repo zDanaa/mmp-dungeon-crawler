@@ -5,16 +5,9 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float lifeTime;
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(DeathDelay());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     IEnumerator DeathDelay()
     {
@@ -22,16 +15,10 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject);
 
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.tag == "Item"){
-            //collision.gameObject.GetComponent<ItemController>().Death();
-            //Destroy(gameObject);
-        //}
         if (collision.tag == "Obstacle"){
             Destroy(gameObject);
         }
     }
-    
 }

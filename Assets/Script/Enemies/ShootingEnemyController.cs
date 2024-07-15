@@ -15,11 +15,10 @@ public class ShootingEnemyController : EnemyController
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        if (PlayerController.currentHealth > 0)
-        {
-            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        }
-
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = target.GetComponent<PlayerController>();
+        playerDamage = player.damage;
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
