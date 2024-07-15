@@ -26,9 +26,11 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        player = target.GetComponent<PlayerController>();
-        playerDamage = player.damage;
+        if (GameObject.FindGameObjectWithTag("Player") != null){
+            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            player = target.GetComponent<PlayerController>();
+            playerDamage = player.damage;
+        }
         attackTimer = attackCooldown;
         animator = GetComponent<Animator>();
     }
