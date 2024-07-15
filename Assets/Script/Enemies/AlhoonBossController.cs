@@ -33,7 +33,7 @@ public class AlhoonBossController : EnemyController
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
         }
-        else {
+        else if (transform != null && target != null){
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
 
