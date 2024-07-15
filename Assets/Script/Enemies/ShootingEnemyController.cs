@@ -26,7 +26,7 @@ public class ShootingEnemyController : EnemyController
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
         }
-        else {
+        else if (transform != null){
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
             if (distanceToPlayer > safeZone)

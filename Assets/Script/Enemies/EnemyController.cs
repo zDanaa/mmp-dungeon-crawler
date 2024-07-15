@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (target == null) return;
+        if (target == null || transform == null) return;
         
         distanceToPlayer = Vector2.Distance(transform.position, target.position);
         direction = (target.position - transform.position).normalized;
