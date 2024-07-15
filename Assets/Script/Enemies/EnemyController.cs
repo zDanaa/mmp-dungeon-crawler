@@ -9,7 +9,10 @@ public class EnemyController : MonoBehaviour
     public float currentHealth;
     public HealthBarScript healthBar;
     public Transform target;
+    public float distanceToPlayer;
+    public Vector2 direction;
     public SpriteRenderer spriteRenderer;
+    protected int initialFlip;
     public PlayerController player;
     public Animator animator;
     public float speed;
@@ -19,13 +22,23 @@ public class EnemyController : MonoBehaviour
     public float damage;
     public float playerDamage;
 
-    void Start()
+    protected virtual void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = target.GetComponent<PlayerController>();
+        playerDamage = player.damage;
+        attackTimer = attackCooldown;
+        animator = GetComponent<Animator>();
     }
-    void Update()
+    protected virtual void Update()
     {
-
+        if (target == null) return;
+        
+        distanceToPlayer = Vector2.Distance(transform.position, target.position);
+        direction = (target.position - transform.position).normalized;
+        setSpriteFlip(direction, initialFlip);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -57,6 +70,11 @@ public class EnemyController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    public void ChasePlayer(Vector2 direction)
+    {
+        transform.Translate(speed * Time.deltaTime * direction);
     }
 }
 

@@ -11,23 +11,17 @@ public class ShootingEnemyController : EnemyController
     public float safeZone;
     public GameObject bullet;
 
-    void Start()
+    protected override void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        player = target.GetComponent<PlayerController>();
-        playerDamage = player.damage;
-        animator = GetComponent<Animator>();
+        base.Start();
+        attackTimer = attackCooldown;
+        initialFlip = -1;
     }
-    void Update()
+    protected override void Update()
     {
-        if (target == null) return;
+        base.Update();
 
-        setSpriteFlip(target.position - transform.position, -1);
-
-        float distanceToTarget = Vector2.Distance(transform.position, target.position);
-        if (distanceToTarget > aggroRange) 
+        if (distanceToPlayer > aggroRange) 
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
@@ -35,15 +29,15 @@ public class ShootingEnemyController : EnemyController
         else {
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
-            if (distanceToTarget > safeZone)
+            if (distanceToPlayer > safeZone)
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             }
-            else if (distanceToTarget < dangerZone)
+            else if (distanceToPlayer < dangerZone)
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
             }
-            else if (distanceToTarget < safeZone && distanceToTarget > dangerZone + 0.5)
+            else if (distanceToPlayer < safeZone && distanceToPlayer > dangerZone + 0.5)
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, (speed / 2) * Time.deltaTime);
             }

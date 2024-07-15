@@ -8,48 +8,34 @@ public class ExplodingEnemyController : EnemyController
     public float explosionDelay;
     private bool isExploding = false;
     public GameObject explosionPrefab;
-    void Start()
+    protected override void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        player = target.GetComponent<PlayerController>();
-        playerDamage = player.damage;
-        animator = GetComponent<Animator>();
+        base.Start();
+        initialFlip = 1;
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (target == null) return;
-        
-        float distance = Vector2.Distance(transform.position, target.position);
-        Vector2 direction = (target.position - transform.position).normalized;
-        setSpriteFlip(direction, 1);
-
-        if (distance > aggroRange && !isExploding)
+        base.Update();
+        if (distanceToPlayer > aggroRange && !isExploding)
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
 
         }
-        if (distance < aggroRange && !isExploding)
+        if (distanceToPlayer < aggroRange && !isExploding)
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
             ChasePlayer(direction);
         }
-        if (distance < explosionRadius && !isExploding)
+        if (distanceToPlayer < explosionRadius && !isExploding)
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", false);
             animator.SetTrigger("Attack");
             Explode();
         }
-    }
-
-    void ChasePlayer(Vector2 direction)
-    {
-        transform.Translate(speed * Time.deltaTime * direction);
     }
 
     void Explode()
