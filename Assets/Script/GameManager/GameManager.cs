@@ -38,7 +38,11 @@ public class GameManager : MonoBehaviour
         {
             if (!hasStartedSpawning && remainingTime <= gameTime - 10f){
                 StartSpawningProcess();
-                Debug.Log("Spawning has started after 10 sec now");
+            }
+
+            if (remainingTime % 20 == 0 && remainingTime != gameTime)
+            {
+                DecreaseRateOfSpawning();
             }
 
             if (Mathf.Approximately(remainingTime, miniBossSpawnTime))
@@ -67,8 +71,11 @@ public class GameManager : MonoBehaviour
     {
         spawner = FindObjectOfType<SpawnerScript>();
         spawner.StartSpawning();
-        Debug.Log("Spawning script has been called from gamemanger  started");
         hasStartedSpawning = true;
+    }
+
+    public void DecreaseRateOfSpawning(){
+        spawner.DecreaseSpawnRate();
     }
 
     public void SpawnMiniBoss()
