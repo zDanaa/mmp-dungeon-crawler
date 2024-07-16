@@ -19,9 +19,14 @@ public class SpawnerScript : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+         if (player == null)
+        {
+            return;
+        }
         currentSpawnRate = spawnRate;
         InitializeValidSpawnPositions(); 
-        StartCoroutine(DelayedStartSpawning(10f));
+       // StartCoroutine(DelayedStartSpawning(10f));
+        Debug.Log("Spawning start methdod");
     }
     
      public void Initialize(ItemPlacementHelper itemPlacementHelper, PlayerController player)
@@ -29,14 +34,18 @@ public class SpawnerScript : MonoBehaviour
         this.itemPlacementHelper = itemPlacementHelper;
         this.player = player;
         currentSpawnRate = spawnRate;
+        Debug.Log("currentSpawnRate: " + currentSpawnRate);
         InitializeValidSpawnPositions(); 
     }
 
     private void InitializeValidSpawnPositions()
     {
-        if (itemPlacementHelper == null || player == null) return;
-
+        if (itemPlacementHelper == null || player == null) {
+        Debug.Log("InitializeValidSpawnPositions: itemPlacementHelper oder player nicht vorhanden."); 
+        return;
+        }
         validSpawnPositions = itemPlacementHelper.GetPotentialSpawnPositions();
+        Debug.Log("Valid Spawn Positions: " + validSpawnPositions.Count);
     } 
 
      private IEnumerator DelayedStartSpawning(float delay)
@@ -50,8 +59,10 @@ public class SpawnerScript : MonoBehaviour
     {
         if (canSpawn)
         {
-            StartCoroutine(DelayedStartSpawning(10f));
+           // StartCoroutine(DelayedStartSpawning(10f));
+            StartCoroutine(Spawn());
         }
+        Debug.Log("Spawning started");
     }
 
     private IEnumerator Spawn()
@@ -59,7 +70,7 @@ public class SpawnerScript : MonoBehaviour
         while (canSpawn)
         {
             yield return new WaitForSeconds(currentSpawnRate);
-
+            Debug.Log("Spawning enemy");
             int randomIndex = Random.Range(0, spawnableObjects.Length);
             GameObject enemyToSpawn = spawnableObjects[randomIndex];
 
@@ -69,7 +80,7 @@ public class SpawnerScript : MonoBehaviour
             {
                 Instantiate(enemyToSpawn, (Vector3)spawnPosition.Value, Quaternion.identity);
                 currentSpawnRate *= decreaseSpawnRateFactor;
-                //Debug.Log("Spawned enemy at: " + spawnPosition.Value + " | Rate: " + currentSpawnRate);
+                Debug.Log("Spawned enemy at: " + spawnPosition.Value + " | Rate: " + currentSpawnRate);
             }
         }
     }
@@ -79,23 +90,28 @@ public class SpawnerScript : MonoBehaviour
     {
         if (validSpawnPositions == null || validSpawnPositions.Count == 0)
         {
+            Debug.Log("GetValidSpawnPosition: Keine gültigen Spawn-Positionen verfügbar.");
             return null;
         }
+        Debug.Log($"GetValidSpawnPosition: Anzahl gültiger Spawn-Positionen: {validSpawnPositions.Count}");
+        Debug.Log($"GetValidSpawnPosition: MinSpawnDistance: {minSpawnDistance}, MaxSpawnDistance: {maxSpawnDistance}");
+
         for (int i = 0; i < 20; i++)
         {
             int randomIndex = Random.Range(0, validSpawnPositions.Count);
             Vector2 potentialPosition = validSpawnPositions[randomIndex];
             float distance = Vector2.Distance(player.transform.position, potentialPosition);
 
+            Debug.Log($"Versuch {i}: PotentialPosition: {potentialPosition}, Distanz zum Spieler: {distance}");
+
             if (distance >= minSpawnDistance && distance <= maxSpawnDistance)
             {
+                Debug.Log($"Erfolgreicher Spawn bei {potentialPosition} mit Distanz {distance}");
                 return potentialPosition;
-        
             }
-
-        
-    }
-    return null;
+        }
+        Debug.Log("GetValidSpawnPosition: Keine gültige Spawn-Position gefunden nach 20 Versuchen.");
+        return null;
     }
           
 

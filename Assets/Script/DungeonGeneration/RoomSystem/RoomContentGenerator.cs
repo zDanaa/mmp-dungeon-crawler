@@ -68,7 +68,8 @@ public class RoomContentGenerator : MonoBehaviour
         {
             player = FindObjectOfType<PlayerController>();
         }
-
+        Debug.Log("Player found: " + player);
+        Debug.Log("ItemPlacementHelper created: " + itemPlacementHelper);
         spawnerScript.Initialize(itemPlacementHelper, player);
         spawnerScript.StartSpawning();
 
