@@ -96,7 +96,7 @@ public class RebindScript : MonoBehaviour
                 break;
             case "backward":
                 inputManager.backward = newKey;
-                ButtonText.text = inputManager.forward.ToString();
+                ButtonText.text = inputManager.backward.ToString();
                 PlayerPrefs.SetString("backwardKey", inputManager.backward.ToString());
                 break;
             case "right":

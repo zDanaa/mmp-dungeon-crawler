@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1166287495
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2086435738, guid: 7694971d2c7c94010bc94b299cc00a91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,13 +102,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  collectedText: {fileID: 0}
   bulletPrefab: {fileID: 9204394723720661615, guid: 58d74ab1d4bd54f83943330a7b6f78c6, type: 3}
-  bulletSpeed: 7
-  decreaseFireDelay: 0.4
+  bulletSpeed: 10
+  decreaseFireDelay: 0.3
   fireDelay: 0.5
   maxHealth: 400
+  healAmount: 80
   healthBar: {fileID: 7573886303553160242}
+  damage: 30
   gameManager: {fileID: 0}
   inputManager: {fileID: 0}
 --- !u!50 &6383720047922127559

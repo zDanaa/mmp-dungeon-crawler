@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject boss;
     private PlayerController player;
     private AlhoonBossController bossInstance;
+    private SpawnerScript spawner;
+    private bool hasStartedSpawning = false;
+    private bool hasSpawnedMiniBoss = false;
 
 
     void Start()
@@ -27,6 +30,13 @@ public class GameManager : MonoBehaviour
         {
             player = FindObjectOfType<PlayerController>();
         }
+        if (hasSpawnedMiniBoss)
+        {
+            if(bossInstance.currentHealth <= 0)
+            {
+                PlayerWins();
+            }
+        }
     }
 
     IEnumerator GameTimer()
@@ -34,9 +44,19 @@ public class GameManager : MonoBehaviour
         float remainingTime = gameTime;
         while (remainingTime > 0)
         {
+            if (!hasStartedSpawning && remainingTime <= gameTime - 10f){
+                StartSpawningProcess();
+            }
+
+            if (remainingTime % 20 == 0 && remainingTime != gameTime)
+            {
+                DecreaseRateOfSpawning();
+            }
+
             if (Mathf.Approximately(remainingTime, miniBossSpawnTime))
             {
                 SpawnMiniBoss();
+                spawner.StopSpawning();
             }
 
             remainingTime--;
@@ -49,15 +69,22 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
+    }
 
-        if (bossInstance.currentHealth <= 0)
-        {
-            PlayerWins();
-        }
+    public void StartSpawningProcess()
+    {
+        spawner = FindObjectOfType<SpawnerScript>();
+        spawner.StartSpawning();
+        hasStartedSpawning = true;
+    }
+
+    public void DecreaseRateOfSpawning(){
+        spawner.DecreaseSpawnRate();
     }
 
     public void SpawnMiniBoss()
     {
+        hasSpawnedMiniBoss = true;
         Instantiate(boss, player.transform.position, Quaternion.identity);
         bossInstance = FindObjectOfType<AlhoonBossController>();
     }
@@ -79,13 +106,14 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance.PlayMusic("GameMusic");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("GameMenu");
     }
 
     public void MainMenu()
     {
+        AudioManager.Instance.StopMusic("GameMusic");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void QuitGame()

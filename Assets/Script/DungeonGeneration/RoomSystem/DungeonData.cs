@@ -10,7 +10,7 @@ public class DungeonData
 
     public HashSet<Vector2Int> GetRoomFloorWithoutCorridors(Vector2Int dictionaryKey)
     {
-        HashSet<Vector2Int> roomFloorWithoutCorridors = new HashSet<Vector2Int>(roomsDictionary[dictionaryKey]);
+       HashSet<Vector2Int> roomFloorWithoutCorridors = new HashSet<Vector2Int>(roomsDictionary[dictionaryKey]);
         roomFloorWithoutCorridors.ExceptWith(corridorPoints);
         return roomFloorWithoutCorridors;
     }

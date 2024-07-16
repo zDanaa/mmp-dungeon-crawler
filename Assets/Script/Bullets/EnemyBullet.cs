@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : Bullet
 {
 
     private GameObject player;
     private Rigidbody2D rb;
     [SerializeField]
     private float force;
-    public float lifeTime;
 
 
-    void Start()
+    protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -25,27 +24,16 @@ public class EnemyBullet : MonoBehaviour
             float rotate = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rotate + 90);
         }
-        StartCoroutine(DeathDelay());
-        AudioManager.Instance.PlaySfx("VolleySound");
+        AudioManager.Instance.PlaySfx("EnemyBullet");
+        base.Start();
     }
 
-    IEnumerator DeathDelay()
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        yield return new WaitForSeconds(lifeTime);
-        Destroy(gameObject);
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
-        if (other.gameObject.CompareTag("Obstacle"))
-        {
-            Destroy(gameObject);
-        }
-
+        base.OnTriggerEnter2D(collision);
     }
 }

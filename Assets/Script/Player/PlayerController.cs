@@ -9,20 +9,20 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
     Rigidbody2D playerBody;
-    public TextMeshProUGUI collectedText;
-    public static int collectedAmount = 0;
     public GameObject bulletPrefab;
     public float bulletSpeed;
     private float lastFire;
     public float decreaseFireDelay;
     public float fireDelay;
-    private Coroutine fireRateCoroutine;
     private bool volleyActive = false;
     public float maxHealth;
+    public float healAmount;
     public static float currentHealth;
     public HealthBarScript healthBar;
-    // Start is called before the first frame update
+    public float damage;
+    
     //Von Lilli
+    private float old_volume;
     [SerializeField]
     public GameManager gameManager;
     private bool isDead;
@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         gameManager = FindFirstObjectByType<GameManager>();
         inputManager = FindFirstObjectByType<InputManager>();
-        collectedText = FindFirstObjectByType<TextMeshProUGUI>();
     }
     void Update()
     {
@@ -62,7 +61,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, vertical, 0).normalized;
         playerBody.velocity = movement * playerSpeed;
-        collectedText.text = "Item Collected:" + collectedAmount;
 
         if (horizontal > 0)
         {
@@ -143,12 +141,8 @@ public class PlayerController : MonoBehaviour
     }
     public void IncreaseFireRate()
     {
-        if (fireRateCoroutine != null)
-        {
-            StopCoroutine(fireRateCoroutine);
-        }
         fireDelay -= decreaseFireDelay;
-        fireRateCoroutine = StartCoroutine(ResetFireRateAfterDelay(5));
+        StartCoroutine(ResetFireRateAfterDelay(5));
         AudioManager.Instance.PlaySfx("FirerateSound");
     }
 
@@ -162,8 +156,15 @@ public class PlayerController : MonoBehaviour
     {
         volleyActive = true;
         int iterations = 6;
+        old_volume =AudioManager.Instance.GetSFXVolume();
+        Debug.Log("SFX Volume: "+ AudioManager.Instance.GetSFXVolume() );
+        if (old_volume>0.4f){
+            AudioManager.Instance.SfxVolume(0.4f);
+        Debug.Log("NEWWWW SFX Volume: "+ AudioManager.Instance.GetSFXVolume() );
+        }
         AudioManager.Instance.PlaySfx("VolleySound");
         StartCoroutine(BulletVolley(iterations));
+        
     }
 
     private IEnumerator BulletVolley(int iterations)
@@ -181,7 +182,8 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireDelay);
         }
         volleyActive = false;
-        AudioManager.Instance.PlaySfx("VolleySound");
+        AudioManager.Instance.SfxVolume(old_volume);
+        Debug.Log("SFX Volume After: "+ AudioManager.Instance.GetSFXVolume() );
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -191,7 +193,7 @@ public class PlayerController : MonoBehaviour
             string itemID = collision.GetComponent<ItemController>().ID;
             if (itemID == "health")
             {
-                Heal(50);
+                Heal(healAmount);
             }
             if (itemID == "fireRate")
             {
@@ -210,15 +212,8 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject); //Or death animation
-        // Handle player death (e.g., respawn, game over, etc.)
+        Destroy(gameObject); 
         Debug.Log("Player died!");
-        //GameManager.instance.ReloadScene();
     }
 
 }
-
-/*if(other.gameObject.CompareTag("Enemy")){
-            Destroy(other.gameObject);
-            target = null;
-        } */ //Nach dem prinzip könnte man One Hit enemys machen

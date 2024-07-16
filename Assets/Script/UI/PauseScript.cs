@@ -10,6 +10,7 @@ public class PauseScript : MonoBehaviour
     public static bool gameIsPause = false;
     public GameObject pauseMenuUI;
     public GameObject optionScreen;
+    public GameObject rebindScreen;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +23,7 @@ public class PauseScript : MonoBehaviour
                 {
                     Resume();
                     optionScreen.SetActive(false);
+                    rebindScreen.SetActive(false);
                 }
                 else
                 {

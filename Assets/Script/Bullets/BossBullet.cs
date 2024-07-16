@@ -1,23 +1,18 @@
 using UnityEngine;
 
-public class BossBullet : MonoBehaviour
+public class BossBullet : Bullet
 {
-    public float lifetime = 5f; 
-
-    void Start()
+    protected override void Start()
     {
-        Destroy(gameObject, lifetime);
+        base.Start();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
-        if (other.gameObject.CompareTag("Obstacle"))
-        {
-            Destroy(gameObject);
-        }
+        base.OnTriggerEnter2D(collision);
     }
 }
