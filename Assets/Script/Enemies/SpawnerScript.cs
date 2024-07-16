@@ -57,15 +57,11 @@ public class SpawnerScript : MonoBehaviour
             yield return new WaitForSeconds(currentSpawnRate);
             int randomIndex = Random.Range(0, spawnableObjects.Length);
             GameObject enemyToSpawn = spawnableObjects[randomIndex];
-
             Vector2? spawnPosition = GetValidSpawnPosition();
-            //currentSpawnRate *= decreaseSpawnRateFactor;
-            Debug.Log("Rate: " + currentSpawnRate);
+            //currentSpawnrate *= decreaseSpawnRateFactor;
             if (spawnPosition.HasValue)
             {
                 Instantiate(enemyToSpawn, (Vector3)spawnPosition.Value, Quaternion.identity);
-                //currentSpawnRate *= decreaseSpawnRateFactor;
-                Debug.Log("Spawned enemy at: " + spawnPosition.Value + " | Rate: " + currentSpawnRate);
             }
         }
     }
@@ -73,7 +69,6 @@ public class SpawnerScript : MonoBehaviour
     public void DecreaseSpawnRate()
     {
         currentSpawnRate -= decreaseSpawnRateFactor;
-        Debug.Log("New spawn rate: " + currentSpawnRate);
     }
 
    private Vector2? GetValidSpawnPosition()
@@ -90,23 +85,14 @@ public class SpawnerScript : MonoBehaviour
 
             if (distance >= minSpawnDistance && distance <= maxSpawnDistance)
             {
-                Debug.Log($"Erfolgreicher Spawn bei {potentialPosition} mit Distanz {distance}");
                 return potentialPosition;
             }
         }
-        Debug.Log("GetValidSpawnPosition: Keine gültige Spawn-Position gefunden nach 20 Versuchen.");
         return null;
     }
-          
 
     /* private Vector2? GetRandomValidSpawnPositionNearPlayer()
     {
-        if (player == null || itemPlacementHelper == null)
-        {
-            Debug.LogError("Player or ItemPlacementHelper is null.");
-            return null;
-        }
-
         Vector2 playerPosition = player.transform.position;
     
         List<Vector2> potentialPositions = GenerateRandomPointsAroundPlayer(playerPosition, minSpawnDistance, maxSpawnDistance, 200);
@@ -121,27 +107,12 @@ public class SpawnerScript : MonoBehaviour
         
         }
         return null;
-    }    
+    }    */
 
-      private List<Vector2> GenerateRandomPointsAroundPlayer(Vector2 playerPosition, float minDistance, float maxDistance, int count)
-    {
-        List<Vector2> randomPoints = new List<Vector2>();
-
-        for (int i = 0; i < count; i++)
-        {
-            float distance = Random.Range(minDistance, maxDistance);
-            float angle = Random.Range(0, Mathf.PI * 2);
-            Vector2 point = playerPosition + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
-            randomPoints.Add(point);
-        }
-
-        return randomPoints;
-    }*/
-
-    public void StopSpawning()
+   /* public void StopSpawning()
 {
     canSpawn = false;
-}
+} */
 
    
 }
