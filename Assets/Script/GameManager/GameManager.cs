@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject boss;
     private PlayerController player;
     private AlhoonBossController bossInstance;
+    private SpawnerScript spawner;
+    private bool hasStartedSpawning = false;
 
 
     void Start()
@@ -34,6 +36,11 @@ public class GameManager : MonoBehaviour
         float remainingTime = gameTime;
         while (remainingTime > 0)
         {
+            if (!hasStartedSpawning && remainingTime <= gameTime - 10f){
+                StartSpawningProcess();
+                Debug.Log("Spawning has started after 10 sec now");
+            }
+
             if (Mathf.Approximately(remainingTime, miniBossSpawnTime))
             {
                 SpawnMiniBoss();
@@ -54,6 +61,14 @@ public class GameManager : MonoBehaviour
         {
             PlayerWins();
         }
+    }
+
+    public void StartSpawningProcess()
+    {
+        spawner = FindObjectOfType<SpawnerScript>();
+        spawner.StartSpawning();
+        Debug.Log("Spawning script has been called from gamemanger  started");
+        hasStartedSpawning = true;
     }
 
     public void SpawnMiniBoss()

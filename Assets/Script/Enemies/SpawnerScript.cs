@@ -19,13 +19,12 @@ public class SpawnerScript : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-         if (player == null)
+        if (player == null)
         {
             return;
         }
         currentSpawnRate = spawnRate;
         InitializeValidSpawnPositions(); 
-       // StartCoroutine(DelayedStartSpawning(10f));
         Debug.Log("Spawning start methdod");
     }
     
@@ -48,18 +47,10 @@ public class SpawnerScript : MonoBehaviour
         Debug.Log("Valid Spawn Positions: " + validSpawnPositions.Count);
     } 
 
-     private IEnumerator DelayedStartSpawning(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        StartSpawning();
-    }
-
-
     public void StartSpawning()
     {
         if (canSpawn)
         {
-           // StartCoroutine(DelayedStartSpawning(10f));
             StartCoroutine(Spawn());
         }
         Debug.Log("Spawning started");

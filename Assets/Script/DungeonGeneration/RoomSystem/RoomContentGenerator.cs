@@ -46,41 +46,11 @@ public class RoomContentGenerator : MonoBehaviour
 
         SelectPlayerSpawnPoint(dungeonData);
         SelectEnemySpawnPoints(dungeonData);
-        
+
         GameObject spawnerInstance = Instantiate(spawnerPrefab, Vector3.zero, Quaternion.identity);
         spawner = spawnerInstance.GetComponent<SpawnerScript>();
         InitializeAndStartSpawning(dungeonData, spawnerInstance, spawner);
 
-       
-        
-           
-       /* HashSet<Vector2Int> roomFloor = new HashSet<Vector2Int>();
-        HashSet<Vector2Int> roomFloorWithoutCorridors = new HashSet<Vector2Int>();
-        foreach (var room in dungeonData.roomsDictionary.Values)
-        {
-            roomFloor.UnionWith(room);
-        }
-
-        foreach (var roomKey in dungeonData.roomsDictionary.Keys)
-        {
-            roomFloorWithoutCorridors.UnionWith(dungeonData.GetRoomFloorWithoutCorridors(roomKey));
-        }
-
-        ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorWithoutCorridors);
-
-        if (player == null)
-        {
-            player = FindObjectOfType<PlayerController>();
-        }
-        Debug.Log("Player found: " + player);
-        Debug.Log("ItemPlacementHelper created: " + itemPlacementHelper);
-        spawnerScript.Initialize(itemPlacementHelper, player);
-        spawnerScript.StartSpawning();
-
-        spawnedObjects.Add(spawnerInstance);*/
-
-
-        
         foreach (GameObject item in spawnedObjects)
         {
             if(!item.scene.IsValid()) continue;
@@ -149,8 +119,6 @@ public class RoomContentGenerator : MonoBehaviour
     Debug.Log("Player found: " + player);
     Debug.Log("ItemPlacementHelper created: " + itemPlacementHelper);
     spawnerScript.Initialize(itemPlacementHelper, player);
-    spawnerScript.StartSpawning();
-
     spawnedObjects.Add(spawnerInstance);
 
     }
