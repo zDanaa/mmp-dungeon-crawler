@@ -30,9 +30,12 @@ public class GameManager : MonoBehaviour
         {
             player = FindObjectOfType<PlayerController>();
         }
-        if (hasSpawnedMiniBoss && bossInstance.currentHealth <= 0)
+        if (hasSpawnedMiniBoss)
         {
-            PlayerWins();
+            if(bossInstance.currentHealth <= 0)
+            {
+                PlayerWins();
+            }
         }
     }
 
