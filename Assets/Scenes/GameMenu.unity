@@ -29203,7 +29203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3799157767542728431, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
       propertyPath: m_Name
-      value: EnemySpawnerTest
+      value: EnemySpawner
       objectReference: {fileID: 0}
     - target: {fileID: 6204212456267307836, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
       propertyPath: m_LocalPosition.x

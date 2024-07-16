@@ -43,14 +43,18 @@ public class RoomContentGenerator : MonoBehaviour
         }
         spawnedObjects.Clear();
 
+
         SelectPlayerSpawnPoint(dungeonData);
         SelectEnemySpawnPoints(dungeonData);
+        
+        GameObject spawnerInstance = Instantiate(spawnerPrefab, Vector3.zero, Quaternion.identity);
+        spawner = spawnerInstance.GetComponent<SpawnerScript>();
+        InitializeAndStartSpawning(dungeonData, spawnerInstance, spawner);
 
        
-        GameObject spawnerInstance = Instantiate(spawnerPrefab, Vector3.zero, Quaternion.identity);
-        SpawnerScript spawnerScript = spawnerInstance.GetComponent<SpawnerScript>();
+        
            
-        HashSet<Vector2Int> roomFloor = new HashSet<Vector2Int>();
+       /* HashSet<Vector2Int> roomFloor = new HashSet<Vector2Int>();
         HashSet<Vector2Int> roomFloorWithoutCorridors = new HashSet<Vector2Int>();
         foreach (var room in dungeonData.roomsDictionary.Values)
         {
@@ -73,8 +77,10 @@ public class RoomContentGenerator : MonoBehaviour
         spawnerScript.Initialize(itemPlacementHelper, player);
         spawnerScript.StartSpawning();
 
-        spawnedObjects.Add(spawnerInstance);
+        spawnedObjects.Add(spawnerInstance);*/
 
+
+        
         foreach (GameObject item in spawnedObjects)
         {
             if(!item.scene.IsValid()) continue;
@@ -119,6 +125,36 @@ public class RoomContentGenerator : MonoBehaviour
 
         }
     }
+
+    private void InitializeAndStartSpawning(DungeonData dungeonData, GameObject spawnerInstance, SpawnerScript spawnerScript)
+    {
+    HashSet<Vector2Int> roomFloor = new HashSet<Vector2Int>();
+    HashSet<Vector2Int> roomFloorWithoutCorridors = new HashSet<Vector2Int>();
+    foreach (var room in dungeonData.roomsDictionary.Values)
+    {
+        roomFloor.UnionWith(room);
+    }
+
+    foreach (var roomKey in dungeonData.roomsDictionary.Keys)
+    {
+        roomFloorWithoutCorridors.UnionWith(dungeonData.GetRoomFloorWithoutCorridors(roomKey));
+    }
+
+    ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorWithoutCorridors);
+
+    if (player == null)
+    {
+        player = FindObjectOfType<PlayerController>();
+    }
+    Debug.Log("Player found: " + player);
+    Debug.Log("ItemPlacementHelper created: " + itemPlacementHelper);
+    spawnerScript.Initialize(itemPlacementHelper, player);
+    spawnerScript.StartSpawning();
+
+    spawnedObjects.Add(spawnerInstance);
+
+    }
+
     public HashSet<Vector2Int> GetRoomAtPosition(Vector2Int position, DungeonData dungeonData)
     {
         foreach (var room in dungeonData.roomsDictionary)
