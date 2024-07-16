@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private AlhoonBossController bossInstance;
     private SpawnerScript spawner;
     private bool hasStartedSpawning = false;
+    private bool hasSpawnedMiniBoss = false;
 
 
     void Start()
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
         if (player == null)
         {
             player = FindObjectOfType<PlayerController>();
+        }
+        if (hasSpawnedMiniBoss && bossInstance.currentHealth <= 0)
+        {
+            PlayerWins();
         }
     }
 
@@ -60,11 +65,6 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
-
-        if (bossInstance.currentHealth <= 0)
-        {
-            PlayerWins();
-        }
     }
 
     public void StartSpawningProcess()
@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnMiniBoss()
     {
+        hasSpawnedMiniBoss = true;
         Instantiate(boss, player.transform.position, Quaternion.identity);
         bossInstance = FindObjectOfType<AlhoonBossController>();
     }
