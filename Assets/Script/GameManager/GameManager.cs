@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
             if (Mathf.Approximately(remainingTime, miniBossSpawnTime))
             {
                 SpawnMiniBoss();
+                spawner.StopSpawning();
             }
 
             remainingTime--;

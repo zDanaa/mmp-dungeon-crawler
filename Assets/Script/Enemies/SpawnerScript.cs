@@ -71,6 +71,12 @@ public class SpawnerScript : MonoBehaviour
         currentSpawnRate -= decreaseSpawnRateFactor;
     }
 
+    public void StopSpawning()
+    {
+        canSpawn = false;
+        currentSpawnRate = 0;
+    }
+
    private Vector2? GetValidSpawnPosition()
     {
         if (validSpawnPositions == null || validSpawnPositions.Count == 0)
