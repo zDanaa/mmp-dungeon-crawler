@@ -29267,7 +29267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076164188631001081, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
       propertyPath: spawnableObjects.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8076164188631001081, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
       propertyPath: spawnableObjects.Array.data[0]
@@ -29277,6 +29277,10 @@ PrefabInstance:
       propertyPath: spawnableObjects.Array.data[1]
       value: 
       objectReference: {fileID: 2998038489356791927, guid: dbbf602da19b047f2908437f466e86fb, type: 3}
+    - target: {fileID: 8076164188631001081, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
+      propertyPath: spawnableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 2998038489356791927, guid: c205357023d9cf54bb51b8a914d72166, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
