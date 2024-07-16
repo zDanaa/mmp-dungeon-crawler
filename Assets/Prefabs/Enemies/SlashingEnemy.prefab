@@ -212,7 +212,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5057538952290214043}
   player: {fileID: 0}
   animator: {fileID: 0}
-  speed: 3.5
+  speed: 4
   attackTimer: 0
   attackCooldown: 1
   aggroRange: 10

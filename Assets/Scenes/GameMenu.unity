@@ -29205,6 +29205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3799157767542728431, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6204212456267307836, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -29251,7 +29255,7 @@ PrefabInstance:
       objectReference: {fileID: 6514106068661012020, guid: d96e612b32be8484495d7b3c00d34c6c, type: 3}
     - target: {fileID: 8076164188631001081, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
       propertyPath: spawnRate
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8076164188631001081, guid: 0a17037a1b4b4498dbf45ce839c9ec99, type: 3}
       propertyPath: maxSpawnDistance
